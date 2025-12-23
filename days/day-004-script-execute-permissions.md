@@ -2,7 +2,7 @@
 
 **Difficulty**: 🟢 Beginner  
 **Category**: Linux Administration  
-**Environment**: Stratos Datacenter – App Server 2  
+**Environment**: Stratos Datacenter
 
 ---
 
