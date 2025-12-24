@@ -1,4 +1,4 @@
-# Day 5 – Install and Disable SELinux (App Server 3)
+# Day 5 – Install and Disable SELinux
 
 ## Goal
 Following a security audit, the xFusionCorp Industries security team decided to introduce **SELinux** to enhance server and application security.  
