@@ -1,27 +1,28 @@
-# Day 5 – Install and Disable SELinux
+ Day 5 — Install and Permanently Disable SELinux
 
-## Goal
-Following a security audit, the xFusionCorp Industries security team decided to introduce **SELinux** to enhance server and application security.  
-For initial testing on **App Server 3 in the Stratos Datacenter**, SELinux must be **installed but permanently disabled**.  
-SELinux will be re-enabled later after required configuration changes.
+**Goal**
 
-> ⚠️ The current SELinux status from the command line should be ignored.  
-> The **final state after the next reboot must be `disabled`**.
+Following a security audit, the xFusionCorp Industries security team decided to introduce SELinux to improve server and application security.
+
+This change applies ONLY to **App Server 3** in the Stratos Datacenter for initial testing.  
+SELinux must be installed but permanently **disabled** so it remains disabled after the next reboot. SELinux will be re-enabled later after required policy tuning.
+
+> ⚠️ The current runtime SELinux status reported by tools can be ignored. The expected final state after reboot is **disabled**.
 
 ---
 
 ## Requirements
-- Install the required SELinux packages
-- Permanently disable SELinux
-- Do **not** reboot the server (maintenance reboot already scheduled)
-- Ensure SELinux remains disabled after reboot
+
+- Install the required SELinux packages.
+- Permanently disable SELinux (persist across reboots).
+- Do NOT reboot the server now (maintenance reboot already scheduled).
+- Ensure SELinux remains disabled after the scheduled reboot.
 
 ---
 
-## Steps
+## 1 — Install SELinux Packages
 
-### 1. Install SELinux Packages
-Install all required SELinux-related packages using `dnf` or `yum`:
+Install required packages with `dnf` (or `yum` on older systems):
 
 ```bash
 sudo dnf install -y \
@@ -31,32 +32,41 @@ sudo dnf install -y \
   policycoreutils-python-utils
 ```
 
-These packages provide:
-- SELinux policies
-- Management utilities
-- Policy tools for future configuration
+What these provide:
+- SELinux policy packages
+- Management utilities (policycoreutils)
+- Policy tooling for future configuration
 
-### 2. Edit SELinux Configuration File
-Open the SELinux configuration file:
+(If your distro uses `yum`, replace `dnf` with `yum`.)
+
+---
+
+## 2 — Edit the Persistent SELinux Config
+
+Open the persistent config:
 
 ```bash
 sudo nano /etc/selinux/config
 ```
 
-Locate the following line and set it exactly as shown:
+Find the `SELINUX=` line and set it exactly to:
 
-```ini
+```
 SELINUX=disabled
 ```
 
-⚠️ Make sure:
-- There are no typos (use `disabled`, not `disabed`)
-- The line is not commented (no leading `#`)
+Important:
+- Use `disabled` (not `disabed`). No typos.
+- Ensure the line is not commented (no leading `#`).
+- Save and exit.
 
-Save and exit the file.
+Note: `setenforce` affects runtime only and does not persist across reboots. Editing `/etc/selinux/config` controls boot-time behavior.
 
-### 3. Verify Configuration
-Check that the configuration file was updated correctly:
+---
+
+## 3 — Verify the Configuration Change
+
+Run:
 
 ```bash
 grep SELINUX= /etc/selinux/config
@@ -64,58 +74,58 @@ grep SELINUX= /etc/selinux/config
 
 Expected output:
 
-```text
+```
 SELINUX=disabled
 ```
 
-Even if `sestatus` or `getenforce` still shows another mode now, it does not matter. The system will apply this configuration after the scheduled reboot.
+If `getenforce` or `sestatus` still shows a different runtime mode now, that is fine — the file controls the state applied after the scheduled reboot.
 
 ---
 
 ## Good to Know 🧠
 
-What is SELinux?  
-SELinux (Security-Enhanced Linux) is a Mandatory Access Control (MAC) security system built into Linux. It restricts what processes can do, even if they run as root.
+### What is SELinux?
+SELinux (Security-Enhanced Linux) is a kernel-level Mandatory Access Control (MAC) implementation that can restrict actions beyond traditional Unix permissions (DAC), including restricting `root` if the policy disallows an action.
 
-SELinux Modes
+### SELinux Modes
 
-| Mode      | Description                                         |
-|-----------|-----------------------------------------------------|
-| Enforcing | Policies are enforced and violations are blocked    |
-| Permissive| Policies are not enforced; violations are logged    |
-| Disabled  | SELinux is completely turned off                    |
+| Mode       | Effect |
+|------------|--------|
+| Enforcing  | SELinux enforces policy; violations are blocked |
+| Permissive | Violations are allowed but logged |
+| Disabled   | SELinux is turned off |
 
-SELinux Policies
+Reminder: This task requires SELinux to be **disabled** after reboot, not set to `permissive`.
 
-| Policy    | Description                                            |
-|-----------|--------------------------------------------------------|
-| Targeted  | Protects selected services (recommended, default)      |
-| Strict    | All processes are confined                             |
-| MLS       | Multi-Level Security (used in military/government)     |
+### Why install but disable?
+- Packages must be present before creating/applying policies.
+- Enabling SELinux too early may break applications.
+- Teams can develop and test policies without causing outages.
 
-Why Disable SELinux Temporarily?
-- Prevents application breakage during setup
-- Allows teams to:
-  - Identify required permissions
-  - Tune policies safely
-  - Avoid unexpected access denials
+---
 
-SELinux will be re-enabled later with proper rules.
+## Key Files
 
-Important Files & Locations
+| Path | Purpose |
+|------|---------|
+| /etc/selinux/config | Persistent SELinux mode (boot-time) |
+| /var/log/audit/audit.log | SELinux denial and audit logs |
+| /etc/selinux/targeted/ | Default targeted policy files |
 
-| File/Directory                    | Purpose                         |
-|-----------------------------------|---------------------------------|
-| /etc/selinux/config               | Main SELinux configuration      |
-| /var/log/audit/audit.log          | SELinux violation logs          |
-| /etc/selinux/targeted/            | Targeted policy files           |
+---
 
-Useful SELinux Commands
+## Useful Commands (reference)
+- getenforce — show current runtime mode
+- sestatus — detailed SELinux status
+- setenforce 0 — set runtime to permissive (temporary)
+- setenforce 1 — set runtime to enforcing (temporary if not disabled in config)
 
-```bash
-getenforce                            # Show current SELinux mode
-sestatus                              # Detailed SELinux status
-setenforce 0                          # Temporarily set permissive mode
-setenforce 1                          # Enable enforcing mode
-sealert -a /var/log/audit/audit.log   # Analyze denials
-```
+> Runtime commands do not override `/etc/selinux/config` after boot.
+
+---
+
+## Quick Checklist (before leaving)
+- [ ] SELinux packages installed.
+- [ ] `/etc/selinux/config` contains `SELINUX=disabled` (uncommented).
+- [ ] Verified with `grep SELINUX= /etc/selinux/config`.
+- [ ] Do NOT reboot now — wait for scheduled maintenance reboot.
