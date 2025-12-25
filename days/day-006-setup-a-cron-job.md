@@ -15,6 +15,8 @@ This task validates:
 
 Cron jobs on CentOS systems are managed by the **cronie** package.
 
+---
+
 ## 🛠️ Steps to Perform the Task
 
 ### 1️⃣ Install Cron Service (cronie)
