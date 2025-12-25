@@ -11,6 +11,10 @@ This task validates:
 
 ---
 
+**cronie** is the Linux package that provides the **cron scheduler**, which allows tasks (commands or scripts) to run automatically at defined times or intervals.
+
+Cron jobs on CentOS systems are managed by the **cronie** package.
+
 ## 🛠️ Steps to Perform the Task
 
 ### 1️⃣ Install Cron Service (cronie)
@@ -93,10 +97,6 @@ hello
 ---
 
 ## 📘 Good to Know (After This Task)
-
-**cronie** is the Linux package that provides the **cron scheduler**, which allows tasks (commands or scripts) to run automatically at defined times or intervals.
-
-Cron jobs on CentOS systems are managed by the **cronie** package.
 
 ### ⏱️ Cron Schedule Format
 
