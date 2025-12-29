@@ -1,4 +1,4 @@
-# 🗂️ Create a BASH Script – News Website Backup
+#  Create a BASH Script – News Website Backup
 
 ## 📌 Task Overview
 
