@@ -213,6 +213,20 @@ Click the screenshot below to view the deployed application:
 
 ## 📚 Good to Know
 
+
+### What is Apache Tomcat?
+
+Apache Tomcat is a lightweight application server used to run **Java web applications**.  
+It works by serving Java applications such as **Servlets and JSP** over HTTP.
+
+#### Why is Tomcat used?
+- To run Java-based web applications
+- To deploy `.war` (Web Application Archive) files
+- To provide a simple and reliable web server for Java apps
+
+Tomcat is widely used because it is **fast, open-source, easy to configure**, and suitable for both development and production environments.
+
+
 ### Apache Tomcat Fundamentals
 
 - **Purpose**: Java Servlet container and web server
