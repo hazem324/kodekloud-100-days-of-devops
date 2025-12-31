@@ -100,7 +100,7 @@ sudo systemctl status httpd
 
 Expected state:
 
-[![httpd status Output](../screenshots/Screenshot-day-12-active-httpd)](../screenshots/Screenshot-day-12-active-httpd)
+[![apache status Output](../screenshots/Screenshot-day-12-active-httpd)](../screenshots/Screenshot-day-12-active-httpd)
 
 ```
 Active: active (running)
