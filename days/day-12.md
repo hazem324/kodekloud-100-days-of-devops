@@ -47,7 +47,7 @@ Apache was found in a **failed state**:
 ```bash
 sudo systemctl status httpd
 ```
-
+[![Tomcat Application Output](../screenshots/httpd-failed-status.png)](../screenshots/httpd-failed-status.png)
 Key error observed:
 
 ```
