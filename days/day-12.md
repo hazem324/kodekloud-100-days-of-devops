@@ -1,14 +1,6 @@
-Perfect 👍
-Below is a **clean alternative `README.md`** that **documents the same task**, but with a **different structure**, clearer **incident-style steps**, and a strong **“Good to Know”** section.
-It is **adapted to your real screenshots and investigation flow** (sendmail conflict + iptables + Apache on 8089).
+#  Apache Service Not Reachable on Port 8089
 
-You can copy-paste this directly into your repository.
-
----
-
-# 🛠️ Apache Service Not Reachable on Port 8089
-
-## 📌 Incident Overview
+##  Incident Overview
 
 The monitoring system reported that **Apache was not reachable on port 8089** on **App Server 1 (stapp01)** in the **Stratos Datacenter**.
 
@@ -38,28 +30,28 @@ curl http://stapp01:8089
 
 ---
 
-## 🧪 Investigation & Resolution Steps
+## 🛠️ Investigation & Resolution Steps
 
-### 1️⃣ Check Apache Service Status
+### 1- Check Apache Service Status
 
 Apache was found in a **failed state**:
 
 ```bash
 sudo systemctl status httpd
 ```
-[![Tomcat Application Output](../screenshots/httpd-failed-status.png)](../screenshots/httpd-failed-status.png)
+[![httpd status Output](../screenshots/Screenshot-day-12-httpd-failed-status.png)](../screenshots/Screenshot-day-12-httpd-failed-status.png)
 Key error observed:
 
 ```
 Address already in use: AH00072: make_sock: could not bind to address 0.0.0.0:8089
 ```
 
-📌 Conclusion:
+ Conclusion:
 Apache could not start because **port 8089 was already in use**.
 
 ---
 
-### 2️⃣ Identify the Port Conflict
+### 2- Identify the Port Conflict
 
 To identify which service was using the port:
 
@@ -68,7 +60,7 @@ sudo netstat -tulnp | grep 8089
 ```
 
 Result:
-
+[![netstat Output](../screenshots/Screenshot-day-12-port-used-by-sendmail-service.png)](../screenshots/Screenshot-day-12-port-used-by-sendmail-service.png)
 ```
 127.0.0.1:8089  LISTEN  sendmail
 ```
@@ -78,7 +70,7 @@ The **sendmail service** was occupying port **8089**, preventing Apache from bin
 
 ---
 
-### 3️⃣ Resolve the Port Conflict
+### 3- Resolve the Port Conflict
 
 Since Apache **must** run on port 8089 (task requirement), the conflicting service was stopped:
 
@@ -91,7 +83,7 @@ This safely freed the port without impacting the task scope.
 
 ---
 
-### 4️⃣ Restart and Enable Apache
+### 4- Restart and Enable Apache
 
 After freeing the port, Apache was restarted:
 
@@ -108,6 +100,8 @@ sudo systemctl status httpd
 
 Expected state:
 
+[![httpd status Output](../screenshots/Screenshot-day-12-active-httpd)](../screenshots/Screenshot-day-12-active-httpd)
+
 ```
 Active: active (running)
 Running, listening on port 8089
@@ -115,20 +109,22 @@ Running, listening on port 8089
 
 ---
 
-### 5️⃣ Local Service Validation
+### 5- Local Service Validation
 
 Apache accessibility was verified locally on the app server:
 
 ```bash
-curl http://localhost:8089
+curl http://172.16.238.10:8089
 ```
+
+[![test Output](../screenshots/Screenshot-day-12-connection-failed.png)](../screenshots/Screenshot-day-12-connection-failed.png)
 
 ✔ Apache responded successfully
 ❌ However, access from the jump host still failed
 
 ---
 
-### 6️⃣ Identify Firewall Restrictions
+### 6- Identify Firewall Restrictions
 
 From the jump host:
 
@@ -150,6 +146,9 @@ Checking firewall rules on the app server:
 sudo iptables -L -n
 ```
 
+[![iptables Output](../screenshots/Screenshot-day-12-port-rule-22-allowed.png)](../screenshots/Screenshot-day-12-port-rule-22-allowed.png)
+
+
 Observation:
 
 * Only SSH (port 22) was allowed
@@ -158,13 +157,15 @@ Observation:
 
 ---
 
-### 7️⃣ Allow Apache Port via iptables
+### 7- Allow Apache Port via iptables
 
 A rule was inserted **before the REJECT rule** to allow Apache traffic:
 
 ```bash
 sudo iptables -I INPUT 4 -p tcp --dport 8089 -j ACCEPT
 ```
+
+[![allow port Output](../screenshots/Screenshot-day-12-enable-port-8089.png)](../screenshots/Screenshot-day-12-enable-port-8089.png)
 
 Verification:
 
@@ -174,18 +175,21 @@ sudo iptables -L -n
 
 ---
 
-### 8️⃣ Final Validation from Jump Host
+### 8- Final Validation from Jump Host
 
 ```bash
 curl http://stapp01:8089
 ```
 
-✅ Apache page successfully loaded
-✅ Issue resolved
+[![test Output](../screenshots/Screenshot-day-12-apatch-server-test.png)](../screenshots/Screenshot-day-12-apatch-server-test.png)
+
+
+- Apache page successfully loaded
+- Issue resolved
 
 ---
 
-## ✅ Final Outcome
+##  Final Outcome
 
 | Checkpoint     | Status         |
 | -------------- | -------------- |
