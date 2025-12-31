@@ -212,7 +212,17 @@ curl http://stapp01:8089
 
 ---
 
-### 🧰 Useful Troubleshooting Commands
+---
+### Port Conflict Resolution
+
+* Identification: Use netstat -tlnup or ss -tlnup
+* Process Discovery: lsof -i :port shows which process uses port
+* Solutions: Change port, stop conflicting service, or reconfigure
+* Prevention: Document port assignments, use port ranges
+
+---
+
+###  Useful Troubleshooting Commands
 
 * **Check service status**
 
