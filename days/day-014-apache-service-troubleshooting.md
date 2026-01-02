@@ -16,7 +16,7 @@ One of the monitoring systems reported that the **Apache (httpd) service was una
 
 ## 🛠️ Steps to Fix the Issue
 
-### 1️⃣ Login to the App Server
+### 1- Login to the App Server
 
 ```bash
 ssh tony@stapp01
@@ -24,7 +24,7 @@ ssh tony@stapp01
 
 ---
 
-### 2️⃣ Check Apache Service Status
+### 2- Check Apache Service Status
 
 ```bash
 sudo systemctl status httpd
@@ -41,7 +41,7 @@ AH00015: Unable to open logs
 
 ---
 
-### 3️⃣ Identify the Root Cause
+### 3- Identify the Root Cause
 
 The error indicates a **port conflict**.
 Apache cannot start because the configured port is already in use.
@@ -65,7 +65,7 @@ LISTEN 127.0.0.1:8084 users:(("sendmail",pid=700))
 
 ---
 
-### 4️⃣ Stop and Disable the Conflicting Service
+### 4- Stop and Disable the Conflicting Service
 
 Since mail service is **not required** for this task, it was safely stopped.
 
@@ -76,7 +76,7 @@ sudo systemctl disable sendmail
 
 ---
 
-### 5️⃣ Verify Apache Configuration
+### 5- Verify Apache Configuration
 
 Ensure Apache is configured to listen on the correct port.
 
@@ -96,7 +96,7 @@ Listen 8084
 [![Apache listening on port 8084](../screenshots/Screenshot-day-14-apache-configuration-set-to-listen-on-port-8084.png)](../screenshots/Screenshot-day-14-apache-configuration-set-to-listen-on-port-8084.png)
 ---
 
-### 6️⃣ Start and Enable Apache Service
+### 6- Start and Enable Apache Service
 
 ```bash
 sudo systemctl start httpd
@@ -118,7 +118,7 @@ Active: active (running)
 [![Apache running successfully](../screenshots/Screenshot-day-14-apache-service-successfully-running-and-enabled.png)](../screenshots/Screenshot-day-14-apache-service-successfully-running-and-enabled.png)
 ---
 
-### 7️⃣ Confirm Apache is Listening on Port 8084
+### 7- Confirm Apache is Listening on Port 8084
 
 ```bash
 sudo ss -lntp | grep 8084
@@ -132,7 +132,7 @@ LISTEN ... users:(("httpd",pid=XXXX))
 
 ---
 
-### 8️⃣ Repeat on All App Servers
+### 8- Repeat on All App Servers
 
 Apply the **same steps** on:
 
@@ -149,14 +149,14 @@ Ensure:
 
 ## 📘 Good to Know
 
-### 🔹 Apache (httpd)
+###  Apache (httpd)
 
 Apache is a widely used open-source web server that listens on a specific port to handle HTTP requests.
 Only **one service can bind to a port at a time**, so port conflicts are a common cause of startup failures.
 
 ---
 
-### 🔹 Common Service Troubleshooting Commands
+###  Common Service Troubleshooting Commands
 
 * Service status:
 
@@ -179,7 +179,7 @@ Only **one service can bind to a port at a time**, so port conflicts are a commo
 
 ---
 
-### 🔹 Port & Process Troubleshooting
+###  Port & Process Troubleshooting
 
 * Check open ports:
 
@@ -202,7 +202,7 @@ Only **one service can bind to a port at a time**, so port conflicts are a commo
 
 ---
 
-### 🔹 Common Causes of Apache Failure
+###  Common Causes of Apache Failure
 
 * Port conflicts (another service using the same port)
 * Incorrect `Listen` configuration
@@ -220,5 +220,3 @@ Only **one service can bind to a port at a time**, so port conflicts are a commo
 ✔ Monitoring alert cleared
 
 ---
-
-💡 *This issue represents a real-world production incident involving port conflicts and service dependency management — a core skill in DevOps and Linux system administration.*
