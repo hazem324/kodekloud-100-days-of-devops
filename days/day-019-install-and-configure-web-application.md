@@ -87,7 +87,6 @@ sudo cp -r ~/apps /var/www/html/
 sudo systemctl restart httpd
 ```
 
----
 
 ### 7. Verify Website Access
 
