@@ -13,7 +13,7 @@ This task ensures:
 
 ## 🛠️ Fix Steps (Corrected & Complete)
 
-### 1️⃣ Install Apache, PHP, and Dependencies (All App Servers)
+### 1- Install Apache, PHP, and Dependencies (All App Servers)
 
 Run the following command **on each App Server**:
 
@@ -22,9 +22,9 @@ sudo yum install -y httpd php php-mysqlnd php-gd php-xml php-mbstring
 ```
 
 **One-line explanation:**
-➡ Installs Apache web server, PHP runtime, and required PHP extensions for WordPress.
+* Installs Apache web server, PHP runtime, and required PHP extensions for WordPress.
 
-🔹 **What each package does:**
+ **What each package does:**
 
 * **httpd** → Apache web server to handle HTTP requests
 * **php** → Executes WordPress PHP code
@@ -33,34 +33,31 @@ sudo yum install -y httpd php php-mysqlnd php-gd php-xml php-mbstring
 * **php-xml** → XML handling used by WordPress
 * **php-mbstring** → Handles multi-byte characters (UTF-8)
 
----
 
-### 2️⃣ Enable Apache Service
+### 2- Enable Apache Service
 
 ```bash
 sudo systemctl enable httpd
 ```
 
-➡ Ensures Apache starts automatically after reboot.
+* Ensures Apache starts automatically after reboot.
 
----
 
-### 3️⃣ Configure Apache to Listen on Port 3002
+### 3- Configure Apache to Listen on Port 3002
 
 ```bash
 sudo vi /etc/httpd/conf/httpd.conf
 ```
 
-➡ Opens Apache main configuration file.
+* Opens Apache main configuration file.
 
 ```apache
 Listen 3002
 ```
 [![Configure Apache to Listen on Port 3002](../screenshots/Screenshot-day-18-config-httpd-port.png)](../screenshots/Screenshot-day-18-config-httpd-port.png)
 
-➡ Changes Apache listening port from default to **3002**.
+* Changes Apache listening port from default to **3002**.
 
----
 
 ### 4️⃣ Restart and Verify Apache
 
@@ -68,13 +65,13 @@ Listen 3002
 sudo systemctl restart httpd
 ```
 
-➡ Applies the new Apache configuration.
+* Applies the new Apache configuration.
 
 ```bash
 sudo systemctl status httpd
 ```
 
-➡ Confirms Apache is running and listening on port **3002**.
+* Confirms Apache is running and listening on port **3002**.
 
 [![httpd server running](../screenshots/Screenshot-day-18-httpd-service-running.png)](../screenshots/Screenshot-day-18-httpd-service-running.png)
 
@@ -85,95 +82,93 @@ sudo yum install -y mariadb-server
 ```
 
 
-### 3️⃣ Enable and Start MariaDB 
+### 3- Enable and Start MariaDB 
 
 ```bash
 sudo systemctl enable mariadb
 ```
 
-➡ Starts MariaDB automatically on system boot.
+* Starts MariaDB automatically on system boot.
 
 ```bash
 sudo systemctl start mariadb
 ```
 
-➡ Launches the MariaDB service.
+* Launches the MariaDB service.
 
 ```bash
 sudo systemctl status mariadb
 ```
 
-➡ Confirms MariaDB is running successfully.
+* Confirms MariaDB is running successfully.
 
 [![MariaDB Service Running on DB Server](../screenshots/Screenshot-day-18-mariaDB-service-running-on-DB-server.png)](../screenshots/Screenshot-day-18-mariaDB-service-running-on-DB-server.png)
 
----
 
-### 4️⃣ Access MariaDB as Root
+### 4- Access MariaDB as Root
 
 ```bash
 sudo mariadb -u root
 ```
 
-➡ Logs into MariaDB using root via Unix socket authentication.
+* Logs into MariaDB using root via Unix socket authentication.
 
 ---
 
-### 5️⃣ Create Database and User
+### 5- Create Database and User
 
 ```sql
 CREATE DATABASE kodekloud_db2;
 ```
 
-➡ Creates the application database.
+* Creates the application database.
 
 ```sql
 CREATE USER 'kodekloud_top'@'%' IDENTIFIED BY 'YchZHRcLkL';
 ```
 
-➡ Creates a database user accessible from App Servers.
+* Creates a database user accessible from App Servers.
 
 ```sql
 GRANT ALL PRIVILEGES ON kodekloud_db2.* TO 'kodekloud_top'@'%';
 ```
 
-➡ Gives full access on the database to the application user.
+* Gives full access on the database to the application user.
 
 ```sql
 FLUSH PRIVILEGES;
 ```
 
-➡ Reloads permission tables immediately.
+* Reloads permission tables immediately.
 
 
 [![Database and User Created Successfully](../screenshots/Screenshot-day-18-database-and-user-created-successfully.png)](../screenshots/Screenshot-day-18-database-and-user-created-successfully.png)
 
----
 
-### 6️⃣ Verify Database Configuration
+### 6- Verify Database Configuration
 
 ```sql
 SHOW DATABASES;
 ```
 
-➡ Confirms the database exists.
+* Confirms the database exists.
 
 ```sql
 SELECT User, Host FROM mysql.user;
 ```
 
-➡ Confirms user and remote access permissions.
+* Confirms user and remote access permissions.
 
 [![Database and User Verification](../screenshots/Screenshot-day-18-database-and-user-verification.png)](../screenshots/Screenshot-day-18-database-and-user-verification.png)
 
 ---
 
-### 7️⃣ Final Application Test via Load Balancer
+### 7- Final Application Test via Load Balancer
 
 * Open the **LBR URL**
 * Click **App** from the top menu
 
-✅ Expected message:
+* Expected message:
 
 ```
 App is able to connect to the database using user kodekloud_top
@@ -187,7 +182,6 @@ App is able to connect to the database using user kodekloud_top
 
 Help with SQL commands to interact with a PostgreSQL database
 
----
 
 ## PostgreSQL Locations
 
@@ -204,7 +198,6 @@ Data directory (varies by distro):
 /var/lib/postgresql/data
 ```
 
----
 
 ## Login
 
@@ -233,7 +226,6 @@ Exit PostgreSQL:
 \q
 ```
 
----
 
 ## Users & Roles
 
@@ -267,7 +259,6 @@ Show role privileges:
 SELECT rolname FROM pg_roles;
 ```
 
----
 
 ## Databases
 
@@ -301,7 +292,6 @@ Grant all privileges on database:
 GRANT ALL PRIVILEGES ON DATABASE database_name TO database_user;
 ```
 
----
 
 ## Tables
 
@@ -339,7 +329,6 @@ Describe table:
 \d users
 ```
 
----
 
 ## Insert Data
 
@@ -359,7 +348,6 @@ VALUES
 ('Sara', 'Watson', 'sara@gmail.com');
 ```
 
----
 
 ## Select Queries
 
@@ -387,7 +375,6 @@ AND condition:
 SELECT * FROM users WHERE location='Massachusetts' AND dept='sales';
 ```
 
----
 
 ## Update & Delete
 
@@ -403,7 +390,6 @@ Delete row:
 DELETE FROM users WHERE id=6;
 ```
 
----
 
 ## Alter Table
 
@@ -425,7 +411,6 @@ Drop column:
 ALTER TABLE users DROP COLUMN age;
 ```
 
----
 
 ## Sorting & Filtering
 
@@ -460,7 +445,6 @@ IN:
 SELECT * FROM users WHERE dept IN ('design', 'sales');
 ```
 
----
 
 ## Joins
 
@@ -489,7 +473,6 @@ INNER JOIN posts ON posts.id = comments.post_id
 INNER JOIN users ON users.id = comments.user_id;
 ```
 
----
 
 ## Indexes
 
@@ -505,7 +488,6 @@ Drop index:
 DROP INDEX idx_location;
 ```
 
----
 
 ## Aggregate Functions
 
@@ -538,7 +520,6 @@ GROUP BY age
 HAVING COUNT(age) >= 2;
 ```
 
----
 
 * PostgreSQL uses **roles**, not separate users/groups
 * `SERIAL` auto-increments IDs
@@ -555,7 +536,6 @@ HAVING COUNT(age) >= 2;
 * **MariaDB (MySQL)**: Relational database storing application data
 * **PHP**: Server-side language that runs WordPress logic
 
----
 
 ###  Web Application Request Flow
 
@@ -572,7 +552,6 @@ HAVING COUNT(age) >= 2;
 6. **Response to Client**
    Generated HTML is returned to the browser.
 
----
 
 ###  Load Balancer Role
 
@@ -581,7 +560,6 @@ HAVING COUNT(age) >= 2;
 * Improves **availability** and **scalability**
 * Acts as the only public entry point
 
----
 
 ###  Shared Storage Importance
 
@@ -590,7 +568,6 @@ HAVING COUNT(age) >= 2;
 * Simplifies updates and maintenance
 * Critical for load-balanced environments
 
----
 
 ###  Database Security Best Practices
 
@@ -603,7 +580,6 @@ HAVING COUNT(age) >= 2;
 * **Avoid Root for Applications**
   Always use a dedicated DB user
 
----
 
 ###  Why Unix Socket Authentication Is Used
 
@@ -612,7 +588,6 @@ HAVING COUNT(age) >= 2;
 * More secure than password-based root login
 * Common in enterprise Linux environments
 
----
 
 ###  Performance Optimization Concepts
 
@@ -624,15 +599,3 @@ HAVING COUNT(age) >= 2;
   Use Redis or Memcached to reduce DB load
 * **Load Balancing**
   Spread traffic across servers for better response time
-
----
-
-### 🔹 DevOps Best Practices Demonstrated
-
-* Separation of concerns (Web vs DB)
-* Least privilege access
-* High availability design
-* Scalable infrastructure
-* Production-ready architecture
-
----
