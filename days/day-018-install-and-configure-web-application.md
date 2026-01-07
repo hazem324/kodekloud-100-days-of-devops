@@ -1,4 +1,4 @@
-# 🌐 WordPress Infrastructure Setup – Stratos Datacenter
+# 🌐 Install and Configure Web Application
 
 xFusionCorp Industries deployed a multi-tier infrastructure to host a WordPress website.
 The shared directory `/vaw/www/html` is already mounted on all App Servers under `/var/www/html`.
@@ -59,7 +59,7 @@ Listen 3002
 * Changes Apache listening port from default to **3002**.
 
 
-### 4️⃣ Restart and Verify Apache
+### 4- Restart and Verify Apache
 
 ```bash
 sudo systemctl restart httpd
@@ -82,7 +82,7 @@ sudo yum install -y mariadb-server
 ```
 
 
-### 3- Enable and Start MariaDB 
+### 5- Enable and Start MariaDB 
 
 ```bash
 sudo systemctl enable mariadb
@@ -105,7 +105,7 @@ sudo systemctl status mariadb
 [![MariaDB Service Running on DB Server](../screenshots/Screenshot-day-18-mariaDB-service-running-on-DB-server.png)](../screenshots/Screenshot-day-18-mariaDB-service-running-on-DB-server.png)
 
 
-### 4- Access MariaDB as Root
+### 6- Access MariaDB as Root
 
 ```bash
 sudo mariadb -u root
@@ -115,7 +115,7 @@ sudo mariadb -u root
 
 ---
 
-### 5- Create Database and User
+### 7- Create Database and User
 
 ```sql
 CREATE DATABASE kodekloud_db2;
@@ -145,7 +145,7 @@ FLUSH PRIVILEGES;
 [![Database and User Created Successfully](../screenshots/Screenshot-day-18-database-and-user-created-successfully.png)](../screenshots/Screenshot-day-18-database-and-user-created-successfully.png)
 
 
-### 6- Verify Database Configuration
+### 8- Verify Database Configuration
 
 ```sql
 SHOW DATABASES;
@@ -163,7 +163,7 @@ SELECT User, Host FROM mysql.user;
 
 ---
 
-### 7- Final Application Test via Load Balancer
+### 9- Final Application Test via Load Balancer
 
 * Open the **LBR URL**
 * Click **App** from the top menu
