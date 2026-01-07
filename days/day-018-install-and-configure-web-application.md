@@ -1,4 +1,4 @@
-# 🌐 Install and Configure Web Application
+#  Install and Configure Web Application
 
 xFusionCorp Industries deployed a multi-tier infrastructure to host a WordPress website.
 The shared directory `/vaw/www/html` is already mounted on all App Servers under `/var/www/html`.
