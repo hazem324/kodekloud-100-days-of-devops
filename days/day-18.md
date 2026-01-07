@@ -56,6 +56,7 @@ sudo vi /etc/httpd/conf/httpd.conf
 ```apache
 Listen 3002
 ```
+[![Configure Apache to Listen on Port 3002](../screenshots/Screenshot-day-18-config-httpd-port.png.png)](../screenshots/Screenshot-day-18-config-httpd-port.png.png)
 
 ➡ Changes Apache listening port from default to **3002**.
 
@@ -75,6 +76,7 @@ sudo systemctl status httpd
 
 ➡ Confirms Apache is running and listening on port **3002**.
 
+[![httpd server running](../screenshots/Screenshot-day-18-httpd-service-running.png)](../screenshots/Screenshot-day-18-httpd-service-running.png)
 
 ### Install MariaDB server:
 
@@ -103,7 +105,7 @@ sudo systemctl status mariadb
 
 ➡ Confirms MariaDB is running successfully.
 
-📸 **Screenshot: MariaDB Service Running on DB Server**
+[![MariaDB Service Running on DB Server](../screenshots/Screenshot-day-18-mariaDB-service-running-on-DB-server.png)](../screenshots/Screenshot-day-18-mariaDB-service-running-on-DB-server.png)
 
 ---
 
@@ -145,7 +147,8 @@ FLUSH PRIVILEGES;
 
 ➡ Reloads permission tables immediately.
 
-📸 **Screenshot: Database and User Created Successfully**
+
+[![Database and User Created Successfully](../screenshots/Screenshot-day-18-database-and-user-created-successfully.png)](../screenshots/Screenshot-day-18-database-and-user-created-successfully.png)
 
 ---
 
@@ -163,7 +166,7 @@ SELECT User, Host FROM mysql.user;
 
 ➡ Confirms user and remote access permissions.
 
-📸 **Screenshot: Database and User Verification**
+[![Database and User Verification](../screenshots/Screenshot-day-18-database-and-user-verification.png)](../screenshots/Screenshot-day-18-database-and-user-verification.png)
 
 ---
 
@@ -178,7 +181,7 @@ SELECT User, Host FROM mysql.user;
 App is able to connect to the database using user kodekloud_top
 ```
 
-📸 **Screenshot: Final Application Connectivity Test**
+[![Final Application Connectivity Test](../screenshots/Screenshot-day-18-final-application-connectivity-test.png)](../screenshots/Screenshot-day-18-final-application-connectivity-test.png)
 
 ---
 
