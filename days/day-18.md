@@ -56,7 +56,7 @@ sudo vi /etc/httpd/conf/httpd.conf
 ```apache
 Listen 3002
 ```
-[![Configure Apache to Listen on Port 3002](../screenshots/Screenshot-day-18-config-httpd-port.png.png)](../screenshots/Screenshot-day-18-config-httpd-port.png.png)
+[![Configure Apache to Listen on Port 3002](../screenshots/Screenshot-day-18-config-httpd-port.png)](../screenshots/Screenshot-day-18-config-httpd-port.png)
 
 ➡ Changes Apache listening port from default to **3002**.
 
@@ -78,14 +78,14 @@ sudo systemctl status httpd
 
 [![httpd server running](../screenshots/Screenshot-day-18-httpd-service-running.png)](../screenshots/Screenshot-day-18-httpd-service-running.png)
 
-### Install MariaDB server:
+### Install MariaDB server (on Database Server):
 
 ```bash
 sudo yum install -y mariadb-server
 ```
 
 
-### 3️⃣ Enable and Start MariaDB (DB Server)
+### 3️⃣ Enable and Start MariaDB 
 
 ```bash
 sudo systemctl enable mariadb
@@ -116,8 +116,6 @@ sudo mariadb -u root
 ```
 
 ➡ Logs into MariaDB using root via Unix socket authentication.
-
-📸 **Screenshot: MariaDB Root Login Successful**
 
 ---
 
@@ -185,41 +183,381 @@ App is able to connect to the database using user kodekloud_top
 
 ---
 
-## 🐬 MySQL / MariaDB Cheat Sheet
+# 🐘 PostgreSQL Cheat Sheet
 
-| Command                                    | Purpose               |
-| ------------------------------------------ | --------------------- |
-| `sudo mariadb -u root`                     | Login as MariaDB root |
-| `SHOW DATABASES;`                          | List all databases    |
-| `USE db_name;`                             | Select a database     |
-| `CREATE DATABASE db;`                      | Create a new database |
-| `CREATE USER 'u'@'%' IDENTIFIED BY 'p';`   | Create a user         |
-| `GRANT ALL PRIVILEGES ON db.* TO 'u'@'%';` | Grant permissions     |
-| `FLUSH PRIVILEGES;`                        | Reload permissions    |
-| `SELECT User, Host FROM mysql.user;`       | List users            |
-| `EXIT;`                                    | Exit MariaDB shell    |
+Help with SQL commands to interact with a PostgreSQL database
 
 ---
 
-Here is an **expanded, clean, and exam-ready “Good to Know” section**, written in the **same style as your example**, but **richer and more complete**.
-You can **paste this directly** into your README.
+## PostgreSQL Locations
+
+Linux:
+
+```
+/usr/bin/psql
+```
+
+Data directory (varies by distro):
+
+```
+/var/lib/pgsql/data
+/var/lib/postgresql/data
+```
 
 ---
 
-## ℹ️ Good to Know?
+## Login
 
-### 🔹 LAMP Stack Architecture
+Login as postgres user:
+
+```bash
+sudo -i -u postgres
+psql
+```
+
+Login to a specific database:
+
+```bash
+psql -d database_name
+```
+
+Login with user:
+
+```bash
+psql -U database_user -d database_name
+```
+
+Exit PostgreSQL:
+
+```sql
+\q
+```
+
+---
+
+## Users & Roles
+
+Show users (roles):
+
+```sql
+\du
+```
+
+Create user:
+
+```sql
+CREATE USER database_user WITH PASSWORD 'your_password';
+```
+
+Grant login permission:
+
+```sql
+ALTER USER database_user WITH LOGIN;
+```
+
+Delete user:
+
+```sql
+DROP USER database_user;
+```
+
+Show role privileges:
+
+```sql
+SELECT rolname FROM pg_roles;
+```
+
+---
+
+## Databases
+
+Show databases:
+
+```sql
+\l
+```
+
+Create database:
+
+```sql
+CREATE DATABASE database_name;
+```
+
+Delete database:
+
+```sql
+DROP DATABASE database_name;
+```
+
+Connect to database:
+
+```sql
+\c database_name
+```
+
+Grant all privileges on database:
+
+```sql
+GRANT ALL PRIVILEGES ON DATABASE database_name TO database_user;
+```
+
+---
+
+## Tables
+
+Show tables:
+
+```sql
+\dt
+```
+
+Create table:
+
+```sql
+CREATE TABLE users (
+    id SERIAL PRIMARY KEY,
+    first_name VARCHAR(100),
+    last_name VARCHAR(100),
+    email VARCHAR(50),
+    password VARCHAR(100),
+    location VARCHAR(100),
+    dept VARCHAR(100),
+    is_admin BOOLEAN,
+    register_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+```
+
+Drop table:
+
+```sql
+DROP TABLE users;
+```
+
+Describe table:
+
+```sql
+\d users
+```
+
+---
+
+## Insert Data
+
+Insert row:
+
+```sql
+INSERT INTO users (first_name, last_name, email)
+VALUES ('Brad', 'Traversy', 'brad@gmail.com');
+```
+
+Insert multiple rows:
+
+```sql
+INSERT INTO users (first_name, last_name, email)
+VALUES
+('Fred', 'Smith', 'fred@gmail.com'),
+('Sara', 'Watson', 'sara@gmail.com');
+```
+
+---
+
+## Select Queries
+
+Select all:
+
+```sql
+SELECT * FROM users;
+```
+
+Select specific columns:
+
+```sql
+SELECT first_name, last_name FROM users;
+```
+
+Where clause:
+
+```sql
+SELECT * FROM users WHERE location = 'Massachusetts';
+```
+
+AND condition:
+
+```sql
+SELECT * FROM users WHERE location='Massachusetts' AND dept='sales';
+```
+
+---
+
+## Update & Delete
+
+Update row:
+
+```sql
+UPDATE users SET email='new@mail.com' WHERE id=2;
+```
+
+Delete row:
+
+```sql
+DELETE FROM users WHERE id=6;
+```
+
+---
+
+## Alter Table
+
+Add column:
+
+```sql
+ALTER TABLE users ADD age INT;
+```
+
+Modify column:
+
+```sql
+ALTER TABLE users ALTER COLUMN age TYPE VARCHAR(3);
+```
+
+Drop column:
+
+```sql
+ALTER TABLE users DROP COLUMN age;
+```
+
+---
+
+## Sorting & Filtering
+
+Order by:
+
+```sql
+SELECT * FROM users ORDER BY last_name ASC;
+SELECT * FROM users ORDER BY last_name DESC;
+```
+
+Distinct:
+
+```sql
+SELECT DISTINCT location FROM users;
+```
+
+Between:
+
+```sql
+SELECT * FROM users WHERE age BETWEEN 20 AND 25;
+```
+
+Like:
+
+```sql
+SELECT * FROM users WHERE dept LIKE 'dev%';
+```
+
+IN:
+
+```sql
+SELECT * FROM users WHERE dept IN ('design', 'sales');
+```
+
+---
+
+## Joins
+
+Inner Join:
+
+```sql
+SELECT users.first_name, posts.title
+FROM users
+INNER JOIN posts ON users.id = posts.user_id;
+```
+
+Left Join:
+
+```sql
+SELECT comments.body, posts.title
+FROM comments
+LEFT JOIN posts ON posts.id = comments.post_id;
+```
+
+Multiple Joins:
+
+```sql
+SELECT users.first_name, posts.title, comments.body
+FROM comments
+INNER JOIN posts ON posts.id = comments.post_id
+INNER JOIN users ON users.id = comments.user_id;
+```
+
+---
+
+## Indexes
+
+Create index:
+
+```sql
+CREATE INDEX idx_location ON users(location);
+```
+
+Drop index:
+
+```sql
+DROP INDEX idx_location;
+```
+
+---
+
+## Aggregate Functions
+
+Count:
+
+```sql
+SELECT COUNT(*) FROM users;
+```
+
+Max / Min / Sum:
+
+```sql
+SELECT MAX(age) FROM users;
+SELECT MIN(age) FROM users;
+SELECT SUM(age) FROM users;
+```
+
+Group By:
+
+```sql
+SELECT age, COUNT(age) FROM users GROUP BY age;
+```
+
+Having:
+
+```sql
+SELECT age, COUNT(age)
+FROM users
+GROUP BY age
+HAVING COUNT(age) >= 2;
+```
+
+---
+
+* PostgreSQL uses **roles**, not separate users/groups
+* `SERIAL` auto-increments IDs
+* `BOOLEAN` replaces `TINYINT(1)`
+* `TIMESTAMP` replaces `DATETIME`
+* Case-sensitive strings use **single quotes**
+
+##  Good to Know?
+
+###  LAMP Stack Architecture
 
 * **Linux**: Operating system providing stability and security
 * **Apache**: Web server that receives and serves HTTP requests
 * **MariaDB (MySQL)**: Relational database storing application data
 * **PHP**: Server-side language that runs WordPress logic
 
-👉 WordPress is built entirely on the LAMP stack.
-
 ---
 
-### 🔹 Web Application Request Flow
+###  Web Application Request Flow
 
 1. **Client Request**
    Browser sends an HTTP request to the Load Balancer.
@@ -236,7 +574,7 @@ You can **paste this directly** into your README.
 
 ---
 
-### 🔹 Load Balancer Role
+###  Load Balancer Role
 
 * Distributes traffic across multiple App Servers
 * Prevents overloading a single server
@@ -245,7 +583,7 @@ You can **paste this directly** into your README.
 
 ---
 
-### 🔹 Shared Storage Importance
+###  Shared Storage Importance
 
 * Ensures all App Servers serve the same WordPress files
 * Prevents file inconsistency between servers
@@ -254,7 +592,7 @@ You can **paste this directly** into your README.
 
 ---
 
-### 🔹 Database Security Best Practices
+###  Database Security Best Practices
 
 * **Remote Access**
   `'user'@'%'` → Allows connections from any host (used in this task)
@@ -267,7 +605,7 @@ You can **paste this directly** into your README.
 
 ---
 
-### 🔹 Why Unix Socket Authentication Is Used
+###  Why Unix Socket Authentication Is Used
 
 * Root DB access allowed only via OS root user
 * No password exposed or transmitted
@@ -276,7 +614,7 @@ You can **paste this directly** into your README.
 
 ---
 
-### 🔹 Performance Optimization Concepts
+###  Performance Optimization Concepts
 
 * **Connection Pooling**
   Reuse database connections to reduce overhead
@@ -289,15 +627,6 @@ You can **paste this directly** into your README.
 
 ---
 
-### 🔹 Why Custom Port (3002) Is Used
-
-* Avoids conflicts with default ports (80/443)
-* Forces traffic to flow through the Load Balancer
-* Improves security and traffic control
-* Common in internal enterprise networks
-
----
-
 ### 🔹 DevOps Best Practices Demonstrated
 
 * Separation of concerns (Web vs DB)
@@ -307,18 +636,3 @@ You can **paste this directly** into your README.
 * Production-ready architecture
 
 ---
-
-### ✅ Key Takeaway
-
-> This setup reflects a real-world, production-grade WordPress deployment using DevOps best practices for security, scalability, and reliability.
-
----
-
-If you want next, I can:
-
-* Make a **shorter exam summary**
-* Add a **diagram explanation**
-* Convert this into **interview Q&A**
-
-Just tell me 💡
-
