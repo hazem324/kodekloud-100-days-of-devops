@@ -15,22 +15,16 @@ Nautilus developers are actively working on one of the project repositories, `/u
 ssh natasha@172.16.238.15
 ```
 
----
-
 ### 2. Navigate to the Repository
 
 ```sh
 cd /usr/src/kodekloudrepos/beta
 ```
 
----
-
 ### 3. Handle Git Safe Directory Warning
 
 Since the repository ownership differs, Git may show a **dubious ownership** error.
 To avoid modifying global Git configuration, execute Git commands using `sudo`.
-
----
 
 ### 4. Check Existing Branches
 
@@ -45,8 +39,6 @@ Example output:
   master
 ```
 
----
-
 ### 5. Switch to the Master Branch
 
 Ensure you are on the `master` branch before creating a new one:
@@ -55,15 +47,11 @@ Ensure you are on the `master` branch before creating a new one:
 sudo git switch master
 ```
 
----
-
 ### 6. Create a New Branch from Master
 
 ```sh
 sudo git checkout -b xfusioncorp_beta
 ```
-
----
 
 ### 7. Verify Branch Creation
 
@@ -78,8 +66,6 @@ Expected output:
   master
 * xfusioncorp_beta
 ```
-
-✔️ The new branch `xfusioncorp_beta` is successfully created from `master`.
 
 ---
 
