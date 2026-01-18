@@ -1,4 +1,4 @@
-# Git Branch Merge – Official Repository
+# Git Branch Merge 
 
 The Nautilus application development team has been working on a project repository located at `/opt/official.git`. This repository is cloned on the Storage Server in Stratos DC at `/usr/src/kodekloudrepos/official`.
 
