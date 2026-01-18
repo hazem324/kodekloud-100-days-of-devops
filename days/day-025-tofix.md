@@ -107,7 +107,7 @@ This pushes the merged changes to the `master` branch on `/opt/official.git`.
 4. Commit the merge (if required)
 5. Push changes to the remote repository
 
-### . Best Practices
+###  Best Practices
 
 * Always verify the active branch before committing
 * Keep commits small and meaningful
