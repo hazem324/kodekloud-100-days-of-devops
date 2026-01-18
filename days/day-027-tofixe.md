@@ -76,7 +76,7 @@ Below are more details about the task:
 
 ---
 
-## Good to Know?
+## 🧠 Good to Know
 
 ### Git Revert vs Reset
 
@@ -85,16 +85,12 @@ Below are more details about the task:
 - **Public History**: Always use revert for shared repositories
 - **Private History**: Reset is acceptable only for local, unpublished changes
 
----
-
 ### Revert Operations
 
 - **Single Commit**: `git revert <commit-hash>`
 - **HEAD**: `git revert HEAD` — revert latest commit
 - **Range**: `git revert HEAD~3..HEAD` — revert multiple commits
 - **No Commit**: `git revert --no-commit` — stage revert without committing
-
----
 
 ### Commit Messages
 
@@ -103,8 +99,6 @@ Below are more details about the task:
 - **Clarity**: Indicates what was reverted
 - **Traceability**: Preserves clear Git history
 
----
-
 ### Safety Considerations
 
 - **Shared Repositories**: Never use `git reset --hard`
@@ -112,13 +106,3 @@ Below are more details about the task:
 - **Clean State**: Always verify `git status` before and after revert
 - **Best Practice**: Preserve history for audit and rollback tracking
 ````
-
----
-
-If you want, I can also:
-
-* create a **generic reusable template** (just change repo name)
-* shorten this into a **1-minute exam cheat sheet**
-* or explain **why the original example with `-m` is incorrect**
-
-Just tell me 👍
