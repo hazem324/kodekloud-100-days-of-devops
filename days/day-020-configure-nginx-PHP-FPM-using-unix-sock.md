@@ -130,7 +130,7 @@ Welcome to xFusionCorp Industries!
 
 ---
 
-## Good to Know
+## 🧠 Good to Know
 
 ### PHP-FPM (FastCGI Process Manager)
 

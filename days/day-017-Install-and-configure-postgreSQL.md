@@ -127,7 +127,7 @@ exit
 
 ---
 
-## 📘 Good to Know
+## 🧠 Good to Know
 
 ### PostgreSQL Roles
 

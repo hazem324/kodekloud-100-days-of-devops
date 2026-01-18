@@ -82,7 +82,7 @@ If `getenforce` or `sestatus` still shows a different runtime mode now, that is 
 
 ---
 
-## Good to Know 🧠
+## 🧠 Good to Know 
 
 ### What is SELinux?
 SELinux (Security-Enhanced Linux) is a kernel-level Mandatory Access Control (MAC) implementation that can restrict actions beyond traditional Unix permissions (DAC), including restricting `root` if the policy disallows an action.
@@ -121,11 +121,3 @@ Reminder: This task requires SELinux to be **disabled** after reboot, not set to
 - setenforce 1 — set runtime to enforcing (temporary if not disabled in config)
 
 > Runtime commands do not override `/etc/selinux/config` after boot.
-
----
-
-## Quick Checklist (before leaving)
-- [ ] SELinux packages installed.
-- [ ] `/etc/selinux/config` contains `SELINUX=disabled` (uncommented).
-- [ ] Verified with `grep SELINUX= /etc/selinux/config`.
-- [ ] Do NOT reboot now — wait for scheduled maintenance reboot.

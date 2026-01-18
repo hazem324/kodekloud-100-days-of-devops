@@ -83,7 +83,7 @@ This is the **recommended approach** for securely enabling SSH access at scale.
 
 ---
 
-## 🧠 Good to Know
+## 🧠 Good to Know 
 
 ### 🔑 SSH Key Authentication Basics
 

@@ -527,7 +527,7 @@ HAVING COUNT(age) >= 2;
 * `TIMESTAMP` replaces `DATETIME`
 * Case-sensitive strings use **single quotes**
 
-##  Good to Know?
+## 🧠 Good to Know 
 
 ###  LAMP Stack Architecture
 

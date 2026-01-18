@@ -57,7 +57,7 @@ Initialized empty Git repository in /opt/apps.git/
 
 ---
 
-## Good to Know
+## 🧠 Good to Know
 
 ### Git Repository Types
 

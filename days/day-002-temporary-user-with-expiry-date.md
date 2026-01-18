@@ -111,7 +111,7 @@ After completing the task, perform these checks:
 | No password expiry (default)  | `sudo chage -l kareem \| grep "Password expires"`  | `Password expires: never`                            |
 | Login possible (if pwd set)   | `su - kareem`                                      | Switches to kareem's shell successfully              |
 
-### Good to Know
+### 🧠 Good to Know 
 
 - **Account Expiry Behavior**: After Feb 17, 2024, the account will be locked — login fails, but account and files remain until manually removed.
 - **Extend Expiry (if needed)**:  

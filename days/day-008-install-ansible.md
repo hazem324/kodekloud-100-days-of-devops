@@ -74,7 +74,7 @@ ansible-core 2.11.12
 ```
 
 ---
-## 🧠 Good to Know ?
+## 🧠 Good to Know 
 
 ### ❓ What Is Ansible?
 

@@ -98,9 +98,9 @@ hello
 
 ---
 
-## 📘 Good to Know (After This Task)
+## 🧠 Good to Know 
 
-### ⏱️ Cron Schedule Format
+###  Cron Schedule Format
 
 Cron syntax uses 5 time fields:
 

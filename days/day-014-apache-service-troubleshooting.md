@@ -147,7 +147,7 @@ Ensure:
 
 ---
 
-## 📘 Good to Know
+## 🧠 Good to Know
 
 ###  Apache (httpd)
 

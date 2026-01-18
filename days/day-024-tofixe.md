@@ -69,7 +69,7 @@ Expected output:
 
 ---
 
-## Good to Know
+## 🧠 Good to Know
 
 ### . Git Branching Fundamentals
 
@@ -86,8 +86,6 @@ Expected output:
 | Switch branch   | `git switch branch-name`      |
 | Create branch   | `git branch branch-name`      |
 | Create & switch | `git checkout -b branch-name` |
-
----
 
 ### . Best Practices
 

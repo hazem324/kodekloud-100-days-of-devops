@@ -150,7 +150,7 @@ REJECT all -- 0.0.0.0/0     0.0.0.0/0
 
 ---
 
-## 📘 Good to Know
+## 🧠 Good to Know
 
 ### 🔹 What is iptables?
 

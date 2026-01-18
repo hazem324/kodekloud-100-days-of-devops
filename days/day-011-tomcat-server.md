@@ -211,7 +211,7 @@ Click the screenshot below to view the deployed application:
 
 ---
 
-## 📚 Good to Know
+## 🧠 Good to Know
 
 
 ### What is Apache Tomcat?

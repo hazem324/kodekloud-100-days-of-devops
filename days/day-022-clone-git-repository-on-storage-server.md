@@ -49,7 +49,7 @@ nothing to commit, working tree clean
 
 ---
 
-## Good to Know
+## 🧠 Good to Know
 
 ### Git Clone Operations
 

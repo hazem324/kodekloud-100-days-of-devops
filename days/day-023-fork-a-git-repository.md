@@ -42,7 +42,7 @@ Fork the repository **`sarah/story-blog`** under the **jon** user account using 
 
 ---
 
-## Good to Know
+## 🧠 Good to Know
 
 ### Git Forking Concepts
 

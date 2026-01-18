@@ -157,7 +157,7 @@ sudo systemctl reload nginx
 
 ---
 
-##  Good to Know
+## 🧠 Good to Know
 
 ### - Load Balancing Basics
 

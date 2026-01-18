@@ -114,7 +114,7 @@ Expected output example:
 
 ---
 
-## Good to Know
+## 🧠 Good to Know
 
 ### Apache Hosting Methods
 

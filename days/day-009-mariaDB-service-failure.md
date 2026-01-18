@@ -92,7 +92,7 @@ Status: "Taking your SQL requests now..."
 
 ---
 
-## 📘 Good to Know
+## 🧠 Good to Know 
 
 ### 🗄️ What is MariaDB?
 
