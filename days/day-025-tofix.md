@@ -85,7 +85,7 @@ This pushes the merged changes to the `master` branch on `/opt/official.git`.
 
 ## 🧠 Good to Know
 
-### * Git Merge Types
+* ###  Git Merge Types
 
 * **Fast-forward Merge**
   Occurs when the target branch has no new commits since branching.
