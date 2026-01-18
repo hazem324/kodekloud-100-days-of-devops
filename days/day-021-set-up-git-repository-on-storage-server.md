@@ -1,4 +1,4 @@
-# Setup Git Repository on Storage Server
+# Set Up Git Repository on Storage Server
 
 The Nautilus development team requested the DevOps team to set up a Git repository for a new application development project. This repository is hosted on the **Storage Server** in the **Stratos DC**.
 
@@ -17,7 +17,7 @@ The objective is to install Git using `yum` and create a **bare Git repository**
 
 ---
 
-## Steps Followed
+## Steps
 
 ### 1. Login to the Storage Server
 
@@ -63,7 +63,7 @@ Initialized empty Git repository in /opt/apps.git/
 
 Git supports different types of repositories depending on their purpose. The two most common types are **Working Repositories** and **Bare Repositories**.
 
-#### . Working Repository
+####  Working Repository
 
 A **working repository** contains a working directory with checked-out project files that developers can modify.
 
@@ -78,7 +78,7 @@ A **working repository** contains a working directory with checked-out project f
 
 * Local development on a developer’s machine
 
-#### . Bare Repository
+####  Bare Repository
 
 A **bare repository** contains **only Git metadata** and does not have a working directory.
 

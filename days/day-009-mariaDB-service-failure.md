@@ -1,6 +1,6 @@
-# 🛠️ Debugging MariaDB Service Failure
+#  MariaDB Troubleshooting
 
-## 📍 Context
+##  Task Description
 
 A **critical production issue** was detected in the **Nautilus application** running in **Stratos Datacenter**.  
 The application failed to connect to its database.
@@ -9,7 +9,7 @@ After investigation, it was confirmed that the **MariaDB service was down** on t
 
 ---
 
-## 🚨 Problem Summary
+##  Problem Summary
 
 - Application cannot connect to the database
 - `mariadb.service` is in **failed** state
@@ -18,7 +18,7 @@ After investigation, it was confirmed that the **MariaDB service was down** on t
 
 ---
 
-## 🔎 Root Cause Analysis
+##  Root Cause Analysis
 
 MariaDB logs showed the following errors:
 
@@ -33,51 +33,51 @@ MariaDB logs showed the following errors:
 
 ---
 
-## 🛠️ Steps to Fix the Issue
+##  Steps
 
-### 1️⃣ Login to the Database Server
+### 1. Login to the Database Server
 
 ```bash
 ssh peter@stdb01
 ```
 
-### 2️⃣ Check MariaDB Service Status
+### 2. Check MariaDB Service Status
 
 ```bash
 systemctl status mariadb.service
 ```
 
-### 3️⃣ Examine MariaDB Logs
+### 3. Examine MariaDB Logs
 
 ```bash
 sudo tail -n 50 /var/log/mariadb/mariadb.log
 ```
 
-### 4️⃣ Correct Directory Ownership
+### 4. Correct Directory Ownership
 
 ```bash
 sudo chown -R mysql:mysql /var/lib/mysql
 ```
 
-### 5️⃣ Set Correct Permissions
+### 5. Set Correct Permissions
 
 ```bash
 sudo chmod -R 750 /var/lib/mysql
 ```
 
-### 6️⃣ Check SELinux (If Applicable)
+### 6. Check SELinux (If Applicable)
 
 ```bash
 sudo setenforce 0
 ```
 
-### 7️⃣ Start MariaDB Service
+### 7. Start MariaDB Service
 
 ```bash
 sudo systemctl start mariadb
 ```
 
-### 8️⃣ Verify Service Status
+### 8. Verify Service Status
 
 ```bash
 systemctl status mariadb
@@ -94,7 +94,7 @@ Status: "Taking your SQL requests now..."
 
 ## 🧠 Good to Know 
 
-### 🗄️ What is MariaDB?
+###  What is MariaDB?
 
 MariaDB is an open-source **Relational Database Management System (RDBMS)** and a drop-in replacement for MySQL.
 
@@ -104,11 +104,10 @@ Common uses:
 - Supports SQL, transactions, indexing, and ACID compliance
 - Common in **LAMP / LEMP stacks**
 
----
 
-## 🔍 Troubleshooting Reference
+##  Troubleshooting Reference
 
-### 📂 Important Paths
+###  Important Paths
 
 | Component | Path |
 |--------|------|
@@ -117,9 +116,8 @@ Common uses:
 | Config Files | /etc/my.cnf |
 | Socket File | /var/lib/mysql/mysql.sock |
 
----
 
-### 🔐 Recommended Permissions
+###  Recommended Permissions
 
 | Component | Owner | Permissions |
 |--------|------|-------------|
@@ -128,15 +126,3 @@ Common uses:
 | Socket File | mysql:mysql | 660 |
 | Log Files | mysql:mysql | 640 |
 
----
-
-## 🏁 Conclusion
-
-The MariaDB outage was caused by **incorrect permissions** on the data directory, preventing **InnoDB from initializing**.
-
-Fixing ownership and permissions restored:
-- InnoDB engine
-- MariaDB service
-- Application connectivity
-
-✔️ MariaDB is healthy and accepting connections.

@@ -1,6 +1,6 @@
- Day 5 — Install and Permanently Disable SELinux
+# SElinux Installation and Configuration
 
-**Goal**
+## Objective
 
 Following a security audit, the xFusionCorp Industries security team decided to introduce SELinux to improve server and application security.
 
@@ -20,7 +20,7 @@ SELinux must be installed but permanently **disabled** so it remains disabled af
 
 ---
 
-## 1 — Install SELinux Packages
+## 1. Install SELinux Packages
 
 Install required packages with `dnf` (or `yum` on older systems):
 
@@ -41,7 +41,7 @@ What these provide:
 
 ---
 
-## 2 — Edit the Persistent SELinux Config
+## 2. Edit the Persistent SELinux Config
 
 Open the persistent config:
 
@@ -64,7 +64,7 @@ Note: `setenforce` affects runtime only and does not persist across reboots. Edi
 
 ---
 
-## 3 — Verify the Configuration Change
+## 3. Verify the Configuration Change
 
 Run:
 
@@ -119,5 +119,3 @@ Reminder: This task requires SELinux to be **disabled** after reboot, not set to
 - sestatus — detailed SELinux status
 - setenforce 0 — set runtime to permissive (temporary)
 - setenforce 1 — set runtime to enforcing (temporary if not disabled in config)
-
-> Runtime commands do not override `/etc/selinux/config` after boot.

@@ -1,4 +1,4 @@
-# Clone Git Repository
+# Clone Git Repository on Storage Server
 
 The DevOps team created a new Git repository that is currently unused. The Nautilus application development team needs a local copy of this repository on the Storage Server in the Stratos DC. This task involves cloning the repository without making any changes to its content or configuration.
 

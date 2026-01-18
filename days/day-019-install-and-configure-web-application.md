@@ -1,4 +1,4 @@
-# Install and Configure Apache Static Websites
+# Install and Configure Web Application
 
 xFusionCorp Industries is preparing its infrastructure in the **Stratos Datacenter** to host two static websites. Although development is still in progress, the servers must be configured in advance to serve the content correctly.
 
@@ -30,7 +30,6 @@ This guide documents the steps followed to install and configure **Apache HTTP S
 sudo yum install -y httpd
 ```
 
-
 ### 2. Configure Apache to Listen on Port 3000
 
 Edit the Apache configuration file:
@@ -45,7 +44,6 @@ Update or add the following line:
 Listen 3000
 ```
 
-
 ### 3. Enable and Start Apache Service
 
 ```sh
@@ -59,7 +57,6 @@ Verify status:
 sudo systemctl status httpd
 ```
 
-
 ### 4. Copy Website Backups from Jump Host
 
 From the jump host, copy the website backups to the application server user’s home directory:
@@ -68,8 +65,6 @@ From the jump host, copy the website backups to the application server user’s 
 scp -r /home/thor/media user@app_server:/home/user/
 scp -r /home/thor/apps user@app_server:/home/user/
 ```
-
----
 
 ### 5. Deploy Websites to Apache Document Root
 
@@ -80,13 +75,11 @@ sudo cp -r ~/media /var/www/html/
 sudo cp -r ~/apps /var/www/html/
 ```
 
-
 ### 6. Restart Apache
 
 ```sh
 sudo systemctl restart httpd
 ```
-
 
 ### 7. Verify Website Access
 
@@ -122,7 +115,6 @@ Expected output example:
 * **Directory-based hosting**: Serve multiple sites from subdirectories
 * **Alias directive**: Map URLs to filesystem locations
 
-
 ### Apache Directory Structure
 
 * **Default Document Root**: `/var/www/html/`
@@ -133,7 +125,6 @@ Expected output example:
   * Files: `644`
   * Ownership: readable by Apache user
 
-
 ### Useful Apache Commands
 
 ```sh
@@ -142,7 +133,6 @@ sudo systemctl stop httpd
 sudo systemctl restart httpd
 sudo systemctl status httpd
 ```
-
 
 ### Common Troubleshooting Tips
 

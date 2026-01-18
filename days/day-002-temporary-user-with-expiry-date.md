@@ -1,4 +1,4 @@
-# Temporary User Setup with Expiry Date (Day 2 - Nautilus Project)
+# Temporary User Setup with Expiry
 
 As part of your temporary assignment to the **Nautilus project**, a developer named **kareem** requires access for a limited duration. To ensure proper access management and security, we need to create a temporary user account that automatically expires after a specific date.
 
@@ -45,7 +45,7 @@ Understanding where user information is stored helps in verification and trouble
 | `/etc/group`      | Stores group membership information                                     | `grep kareem /etc/group`                        |
 | `/etc/login.defs` | Default settings for user creation (used by useradd)                    | Not user-specific, but defines defaults         |
 
-> **Important**: `/etc/shadow` is readable only by root — always use `sudo` to view it.
+ **Important**: `/etc/shadow` is readable only by root — always use `sudo` to view it.
 
 ### Verification Steps
 

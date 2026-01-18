@@ -1,6 +1,6 @@
-# 🚀 Install and Setup Apache Tomcat Server
+#  Install and Configure Tomcat Server
 
-## 📌 Task Overview
+##  Task Overview
 
 The Nautilus application development team has completed the beta version of a Java-based application and decided to deploy it using **Apache Tomcat**.
 
@@ -12,7 +12,7 @@ curl http://stapp03:8088
 
 ---
 
-## 🎯 Objectives
+##  Objectives
 
 - Install Java (JVM)
 - Install and configure Apache Tomcat
@@ -22,9 +22,9 @@ curl http://stapp03:8088
 
 ---
 
-## 🛠️ Step-by-Step Implementation
+##  Steps
 
-### 1- Install Java (JVM)
+### 1. Install Java (JVM)
 
 Tomcat is a Java application and requires a JVM.
 
@@ -32,7 +32,7 @@ Tomcat is a Java application and requires a JVM.
 sudo yum install java-1.8.0-openjdk-devel -y
 ```
 
-### 2- Create a Dedicated Tomcat User (Best Practice)
+### 2. Create a Dedicated Tomcat User (Best Practice)
 
 Running Tomcat as root is insecure.  
 A dedicated user improves security and follows the principle of least privilege.
@@ -47,7 +47,7 @@ sudo useradd -M -U -d /opt/tomcat -s /sbin/nologin -g tomcat tomcat
 - Limits damage if Tomcat is compromised
 - Isolates Tomcat from system users
 
-### 3- Create Tomcat Installation Directory
+### 3. Create Tomcat Installation Directory
 
 ```bash
 sudo mkdir /opt/tomcat
@@ -55,7 +55,7 @@ sudo mkdir /opt/tomcat
 
 This directory will hold the Tomcat runtime files.
 
-### 4- Download and Extract Apache Tomcat
+### 4. Download and Extract Apache Tomcat
 
 ```bash
 wget https://archive.apache.org/dist/tomcat/tomcat-9/v9.0.80/bin/apache-tomcat-9.0.80.tar.gz
@@ -67,7 +67,7 @@ Extract into `/opt/tomcat`:
 sudo tar -xf apache-tomcat-9.0.80.tar.gz -C /opt/tomcat --strip-components=1
 ```
 
-### 5- Set Correct Permissions
+### 5. Set Correct Permissions
 
 Tomcat must own its own files.
 
@@ -75,7 +75,7 @@ Tomcat must own its own files.
 sudo chown -R tomcat:tomcat /opt/tomcat
 ```
 
-### 6- Create a systemd Service for Tomcat
+### 6. Create a systemd Service for Tomcat
 
 Creating a service allows Tomcat to:
 - Start at boot

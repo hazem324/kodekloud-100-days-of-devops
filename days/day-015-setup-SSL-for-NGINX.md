@@ -1,4 +1,4 @@
-# 🔐 Setup SSL for NGINX on App Server 3
+# Setup SSL for Nginx
 
 The system admins team of **xFusionCorp Industries** needs to prepare **App Server 3** in the **Stratos Datacenter** for a new application deployment.
 
@@ -6,9 +6,9 @@ This task focuses on installing **NGINX**, configuring **HTTPS (SSL)** using a *
 
 ---
 
-## 🛠️ Steps to Solve the Task
+##  Steps
 
-### 1- Install and Start NGINX
+### 1. Install and Start NGINX
 
 Install NGINX on **App Server 3**:
 
@@ -31,9 +31,7 @@ systemctl status nginx
 
 [![NGINX Status Running](../screenshots/Screenshot-day-15-NGINX-service-running.png)](../screenshots/Screenshot-day-15-NGINX-service-running.png)
 
----
-
-### 2- Move SSL Certificate and Key to a Secure Location
+### 2. Move SSL Certificate and Key to a Secure Location
 
 The SSL files were initially located in `/tmp`, which is **not suitable** for production use.
 
@@ -63,9 +61,7 @@ sudo chmod 644 /etc/nginx/ssl/nautilus.crt
 * `644` on the certificate → readable by NGINX, but not modifiable by others
 * This prevents unauthorized access to the **private key**, which is critical for SSL security
 
----
-
-### 3- Configure SSL in NGINX
+### 3. Configure SSL in NGINX
 
 Edit the SSL configuration file:
 
@@ -113,9 +109,7 @@ Reload NGINX to apply changes:
 sudo systemctl reload nginx
 ```
 
----
-
-### 4- Create the Web Page
+### 4. Create the Web Page
 
 Create the `index.html` file under the NGINX document root:
 
@@ -131,9 +125,7 @@ Welcome!
 
 Save and exit.
 
----
-
-### 5- Final Testing from Jump Host
+### 5. Final Testing from Jump Host
 
 From the **jump host**, test HTTPS access:
 

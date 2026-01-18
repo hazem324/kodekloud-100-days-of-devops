@@ -1,6 +1,6 @@
-# 🔐 Linux SSH Automation – Password-less Access (Day 007)
+# Linux SSH Authentication
 
-## 📌 Objective
+##  Objective
 
 The system admins team of **xFusionCorp Industries** uses automation scripts on a **jump host** to run regular tasks across multiple **application servers** in the **Stratos Datacenter**.
 
@@ -8,7 +8,7 @@ To ensure these scripts run **without manual intervention**, the jump host user 
 
 ---
 
-## 🎯 Goal of the Task
+##  Goal of the Task
 
 * Configure **password-less SSH authentication**
 * Enable secure, automated access from the jump host
@@ -17,9 +17,9 @@ To ensure these scripts run **without manual intervention**, the jump host user 
 
 ---
 
-## 🛠️ Steps to Complete the Task
+##  Steps to Complete the Task
 
-### 1️⃣ Generate an SSH Key Pair on the Jump Host
+### 1. Generate an SSH Key Pair on the Jump Host
 
 Run the following command on the jump host as the automation user:
 
@@ -37,7 +37,7 @@ This generates:
 
 ---
 
-### 2️⃣ Copy the Public Key to an Application Server
+### 2. Copy the Public Key to an Application Server
 
 Use the following **example command** to install the public key on an application server:
 
@@ -53,7 +53,7 @@ What this does:
 
 ---
 
-### 3️⃣ Verify Password-less Access
+### 3. Verify Password-less Access
 
 Test SSH access using the same **example format**:
 
@@ -65,13 +65,13 @@ If configured correctly, login will occur **without a password prompt**.
 
 ---
 
-### 4️⃣ Repeat for All Application Servers
+### 4. Repeat for All Application Servers
 
 Repeat the key-copy and verification steps for **each application server**, using its respective sudo user.
 
 ---
 
-## ⚡ Optimized Automated Solution
+##  Optimized Automated Solution
 
 For automation or scripting, the key deployment process can be simplified using:
 
@@ -85,7 +85,7 @@ This is the **recommended approach** for securely enabling SSH access at scale.
 
 ## 🧠 Good to Know 
 
-### 🔑 SSH Key Authentication Basics
+###  SSH Key Authentication Basics
 
 * **Supported Key Types**
 
@@ -100,7 +100,7 @@ This is the **recommended approach** for securely enabling SSH access at scale.
 
 ---
 
-### 📁 SSH Files & Permissions
+###  SSH Files & Permissions
 
 SSH enforces **strict permissions** to protect keys and prevent unauthorized access.  
 If permissions are too open, **SSH will refuse key-based login**.
@@ -129,7 +129,7 @@ If permissions are too open, **SSH will refuse key-based login**.
 
 ---
 
-### 🤖 Why Password-less SSH Matters
+###  Why Password-less SSH Matters
 
 * Enables cron jobs and automation scripts
 * Eliminates interactive password prompts
@@ -138,17 +138,10 @@ If permissions are too open, **SSH will refuse key-based login**.
 
 ---
 
-### ✅ Best Practices
+###  Best Practices
 
 * Use modern key types (Ed25519)
 * Rotate SSH keys regularly
 * Remove unused keys from `authorized_keys`
 * Use `ssh-agent` if passphrases are enabled
 * Disable password authentication in production environments
-
----
-
-## 🏁 Conclusion
-
-SSH key-based authentication is a **foundational DevOps practice**.
-By using example-based commands, this setup remains **secure, reusable, and automation-friendly** across environments.

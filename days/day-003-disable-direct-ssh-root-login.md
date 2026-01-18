@@ -1,4 +1,4 @@
-# Disable Direct SSH Root Login on Nautilus App Servers (Stratos Datacenter)
+# Secure Root SSH Access
 
 ## Overview
 This document describes how to disable direct SSH root login on the Nautilus application servers in the Stratos Datacenter:
@@ -25,10 +25,10 @@ Disabling direct root SSH login reduces the attack surface and enforces use of i
 
 If you need to create a sudo user (example):
 ```bash
-# create user and set password (interactive)
+# create user and set password 
 sudo adduser newuser
 
-# add user to sudoers group (Debian/Ubuntu)
+# add user to sudoers group 
 sudo usermod -aG sudo newuser
 
 # or on RHEL/CentOS use "wheel"
@@ -41,14 +41,14 @@ sudo -v
 
 ---
 
-## Steps to Disable Direct Root SSH Login
+## Steps 
 
-1) Log in as the sudo-enabled non-root user:
+1. Log in as the sudo-enabled non-root user:
 ```bash
 ssh username@stapp01
 ```
 
-2) Edit the SSH daemon configuration file:
+2. Edit the SSH daemon configuration file:
 ```bash
 sudo nano /etc/ssh/sshd_config
 ```
@@ -66,7 +66,7 @@ Explanation:
 - `PermitRootLogin` controls whether the `root` user can SSH directly.
 - `no` prevents any interactive SSH login as root (both password and key-based), enforcing login via a non-root account and escalation to root with `sudo`.
 
-3) Restart the SSH service to apply changes:
+3. Restart the SSH service to apply changes:
 ```bash
 sudo systemctl restart sshd
 ```
@@ -96,7 +96,7 @@ Explanation:
 
 ---
 
-## Verification (do this from a separate/new terminal)
+## Verification 
 1. Confirm non-root SSH still works:
 ```bash
 ssh username@stapp01

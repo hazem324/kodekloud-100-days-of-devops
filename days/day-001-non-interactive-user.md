@@ -1,18 +1,12 @@
-# Day 001: Create a Non-Interactive Service Account User on Linux (Nautilus Project)
+# Day 001: Create a Non-Interactive Service Account User on Linux
 
-**Difficulty:** 🟢 Beginner  
-**Time:** 10 minutes  
-**Category:** Linux Administration  
-**Project:** Nautilus App Server (stapp03)  
-**Date:** December 21, 2025
-
-## 🎯 Objective
+## Objective
 
 Create a service account user named `anita` with a non-interactive shell on the Nautilus application server `stapp03`. This user will be used for automated processes and must not allow direct interactive login. Additionally, connect to the server securely using SSH key-based authentication (passwordless).
 
 ---
 
-## 📋 Prerequisites
+## Prerequisites
 
 - Local machine with `ssh-keygen` and `ssh-copy-id` available
 - Initial access credentials for the server:
@@ -25,7 +19,7 @@ Create a service account user named `anita` with a non-interactive shell on the 
 
 ---
 
-## 🔧 Technologies Used
+## Technologies Used
 
 - SSH key-based authentication
 - Linux user management (`useradd`, `/etc/passwd`)

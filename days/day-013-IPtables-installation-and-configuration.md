@@ -1,6 +1,6 @@
 # 🔐 IPtables Installation and Configuration – Apache Port Protection
 
-## 📌 Task Overview
+##  Task Overview
 
 A website is running on the **Nautilus infrastructure** in **Stratos DC**.
 The security team identified that **Apache port `6400`** is open to everyone because no firewall was configured.
@@ -17,7 +17,7 @@ To secure the application servers, **iptables** was chosen as the firewall solut
 4. Ensure firewall rules **persist after reboot**
 
 
-## 🛠️ Implementation (Commands shown for ONE server)
+##  Steps
 
 > ⚠️ **The same commands are reused on all other app servers**
 
@@ -152,7 +152,7 @@ REJECT all -- 0.0.0.0/0     0.0.0.0/0
 
 ## 🧠 Good to Know
 
-### 🔹 What is iptables?
+###  What is iptables?
 
 **iptables** is a **Linux firewall tool** used to:
 
@@ -161,13 +161,13 @@ REJECT all -- 0.0.0.0/0     0.0.0.0/0
 * Define security rules at the kernel level
 
 
-### 🔹 Important Files
+###  Important Files
 
 * `/etc/sysconfig/iptables` → Saved firewall rules
 * `/usr/lib/systemd/system/iptables.service` → Service definition
 
 
-### 🔹 Core Concepts
+###  Core Concepts
 
 * **Tables**: `filter` (default), `nat`, `mangle`
 * **Chains**:
@@ -182,14 +182,14 @@ REJECT all -- 0.0.0.0/0     0.0.0.0/0
   * `REJECT` → block with response
 
 
-### 🔹 Rule Processing Logic
+###  Rule Processing Logic
 
 * Rules are evaluated **top to bottom**
 * **First match wins**
 * Rules after a `DROP` or `REJECT` may never execute
 
 
-### 🔹 Common Commands
+###  Common Commands
 
 ```bash
 iptables -L -n            # list rules
@@ -198,13 +198,3 @@ iptables -I               # insert rule at position
 iptables -D               # delete rule
 service iptables save     # persist rules
 ```
-
-
-##  Final Status
-
-*  Apache port secured
-*  Only LBR can access port 6400
-*  Firewall rules persistent
-*  Same steps reused across all app servers
-
----

@@ -1,4 +1,4 @@
-# Git Branch Create
+# Git Create Branches
 
 Nautilus developers are actively working on one of the project repositories, `/usr/src/kodekloudrepos/beta`. Recently, they decided to implement new features and want to maintain those changes in a separate branch. Below are the requirements shared with the DevOps team:
 

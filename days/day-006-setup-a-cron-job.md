@@ -1,6 +1,6 @@
-# Day 6 – Setup a Cron Job on Nautilus App Servers
+# Create a Cron Job
 
-## 🎯 Objective
+##  Objective
 
 The Nautilus system admins team needs to verify that scheduled tasks can run correctly on all **Nautilus app servers** in the **Stratos Datacenter** before deploying real automation scripts.
 
@@ -17,9 +17,9 @@ Cron jobs on CentOS systems are managed by the **cronie** package.
 
 ---
 
-## 🛠️ Steps to Perform the Task
+##  Steps to Perform the Task
 
-### 1️⃣ Install Cron Service (cronie)
+### 1. Install Cron Service (cronie)
 
 
 Run the following command:
@@ -30,7 +30,7 @@ sudo yum install cronie -y
 
 ---
 
-### 2️⃣ Start and Enable the Cron Daemon
+### 2. Start and Enable the Cron Daemon
 
 Start the cron service so jobs can run immediately, and enable it to start automatically on reboot.
 
@@ -49,7 +49,7 @@ The service should show **active (running)**.
 
 ---
 
-### 3️⃣ Add a Cron Job for Root User
+### 3. Add a Cron Job for Root User
 
 Edit the root user’s crontab:
 
@@ -72,7 +72,7 @@ Save and exit the editor.
 
 ---
 
-### 4️⃣ Verify the Cron Job
+### 4. Verify the Cron Job
 
 List the root cron jobs to confirm the entry exists:
 
@@ -82,7 +82,7 @@ sudo crontab -l
 
 ---
 
-### 5️⃣ Test the Cron Execution
+### 5. Test the Cron Execution
 
 Wait at least **5 minutes**, then check the output file:
 
@@ -115,7 +115,7 @@ Examples:
 
 ---
 
-### 🧩 Cron Types
+###  Cron Types
 
 Cron jobs can be scheduled in different ways:
 
@@ -148,7 +148,7 @@ Cron jobs can be scheduled in different ways:
 
 ---
 
-### ✳️ Special Characters in Cron
+###  Special Characters in Cron
 
 Cron uses special characters to define schedules:
 
@@ -165,7 +165,7 @@ Example:
 
 ---
 
-### 👤 Root vs User Cron Jobs
+###  Root vs User Cron Jobs
 
 * `sudo crontab -e` → system-level tasks (used here)
 * `crontab -e` → user-specific tasks
@@ -174,7 +174,7 @@ Each user has a **separate crontab**.
 
 ---
 
-### 🧪 Troubleshooting Tips
+###  Troubleshooting Tips
 
 If the cron job does not run:
 
@@ -189,7 +189,7 @@ If the cron job does not run:
 
 ---
 
-### 🚀 Why This Task Is Important
+###  Why This Task Is Important
 
 This task confirms that:
 

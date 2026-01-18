@@ -8,9 +8,9 @@ This task focuses on **creating a database user and database**, without restarti
 
 ---
 
-## 🛠️ Steps to Fix the Task
+##  Steps
 
-### 1- Check PostgreSQL Service Status
+### 1. Check PostgreSQL Service Status
 
 Verify the current status of the PostgreSQL service:
 ```bash
@@ -39,26 +39,20 @@ sudo systemctl status postgresql
 
 [![PostgreSQL Service Enabled](../screenshots/Screenshot-day-17-postgreSQL-service-enabled.png)](../screenshots/Screenshot-day-17-postgreSQL-service-enabled.png)
 
----
-
-### 2- Login to the Database Server
+### 2. Login to the Database Server
 
 ```bash
 ssh user@db_host
 ```
 
----
-
-### 3- Switch to PostgreSQL System User
+### 3. Switch to PostgreSQL System User
 
 ```bash
 sudo -i -u postgres
 ```
 [![connect to PostgreSQL System User](../screenshots/Screenshot-day-17-connect-to-postgreSQL-system-user.png)](../screenshots/Screenshot-day-17-connect-to-postgreSQL-system-user.png)
 
----
-
-### 4- Open PostgreSQL Interactive Shell
+### 4. Open PostgreSQL Interactive Shell
 
 ```bash
 psql
@@ -66,9 +60,7 @@ psql
 
 All database commands are executed **inside the PostgreSQL prompt**.
 
----
-
-### 5- Create Database User
+### 5. Create Database User
 
 ```sql
 CREATE USER database_user WITH PASSWORD 'your_password';
@@ -81,9 +73,7 @@ CREATE USER database_user WITH PASSWORD 'your_password';
 
 [![postgres-create-user](../screenshots/Screenshot-day-17-postgres-create-user.png)](../screenshots/Screenshot-day-17-postgres-create-user.png)
 
----
-
-### 6- Create Application Database
+### 6. Create Application Database
 
 ```sql
 CREATE DATABASE database_name;
@@ -94,9 +84,7 @@ CREATE DATABASE database_name;
 * Creates a dedicated database for the application
 * The database is empty and ready for use
 
----
-
-### 7- Grant Full Privileges on Database
+### 7. Grant Full Privileges on Database
 
 ```sql
 GRANT ALL PRIVILEGES ON DATABASE database_name TO database_user;
@@ -109,9 +97,7 @@ GRANT ALL PRIVILEGES ON DATABASE database_name TO database_user;
 
 [![PostgreSQL Grant Privileges](../screenshots/Screenshot-day-17-postgreSQL-grant-privileges.png)](../screenshots/Screenshot-day-17-postgreSQL-grant-privileges.png)
 
----
-
-### 8- Exit PostgreSQL
+### 8. Exit PostgreSQL
 
 ```sql
 \q
@@ -123,7 +109,7 @@ Then exit the postgres user session:
 exit
 ```
 
-✅ **PostgreSQL service was NOT restarted**, as required.
+ **PostgreSQL service was NOT restarted**, as required.
 
 ---
 

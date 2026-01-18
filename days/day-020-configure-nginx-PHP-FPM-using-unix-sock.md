@@ -1,4 +1,4 @@
-# Configure Nginx & PHP-FPM Using Unix Socket
+# Configure Nginx + PHP-FPM Using Unix Sock
 
 The Nautilus application development team is planning to launch a new PHP-based application, which they want to deploy on Nautilus infra in Stratos DC. The development team had a meeting with the production support team and they have shared some requirements regarding the infrastructure. Below are the requirements they shared:
 

@@ -1,4 +1,4 @@
-#  Apache Service Not Reachable on Port 8089
+#  Linux Network Services
 
 ##  Incident Overview
 
@@ -15,7 +15,7 @@ The objective was to **restore access to Apache from the jump host** without mod
 
 ---
 
-## 🎯 Goal
+##  Goal
 
 * Ensure Apache is **running and listening on port 8089**
 * Ensure the service is **reachable from the jump host**
@@ -30,9 +30,9 @@ curl http://stapp01:8089
 
 ---
 
-## 🛠️ Investigation & Resolution Steps
+##  Steps
 
-### 1- Check Apache Service Status
+### 1. Check Apache Service Status
 
 Apache was found in a **failed state**:
 
@@ -49,9 +49,7 @@ Address already in use: AH00072: make_sock: could not bind to address 0.0.0.0:80
  Conclusion:
 Apache could not start because **port 8089 was already in use**.
 
----
-
-### 2- Identify the Port Conflict
+### 2. Identify the Port Conflict
 
 To identify which service was using the port:
 
@@ -65,12 +63,10 @@ Result:
 127.0.0.1:8089  LISTEN  sendmail
 ```
 
-📌 Conclusion:
+ Conclusion:
 The **sendmail service** was occupying port **8089**, preventing Apache from binding to it.
 
----
-
-### 3- Resolve the Port Conflict
+### 3. Resolve the Port Conflict
 
 Since Apache **must** run on port 8089 (task requirement), the conflicting service was stopped:
 
@@ -81,9 +77,7 @@ sudo systemctl disable sendmail
 
 This safely freed the port without impacting the task scope.
 
----
-
-### 4- Restart and Enable Apache
+### 4. Restart and Enable Apache
 
 After freeing the port, Apache was restarted:
 
@@ -107,9 +101,7 @@ Active: active (running)
 Running, listening on port 8089
 ```
 
----
-
-### 5- Local Service Validation
+### 5. Local Service Validation
 
 Apache accessibility was verified locally on the app server:
 
@@ -122,9 +114,8 @@ curl http://172.16.238.10:8089
 ✔ Apache responded successfully
 ❌ However, access from the jump host still failed
 
----
 
-### 6- Identify Firewall Restrictions
+### 6. Identify Firewall Restrictions
 
 From the jump host:
 
@@ -155,9 +146,7 @@ Observation:
 * A `REJECT` rule blocked all other incoming traffic
 * Port 8089 was not permitted
 
----
-
-### 7- Allow Apache Port via iptables
+### 7. Allow Apache Port via iptables
 
 A rule was inserted **before the REJECT rule** to allow Apache traffic:
 
@@ -173,9 +162,7 @@ Verification:
 sudo iptables -L -n
 ```
 
----
-
-### 8- Final Validation from Jump Host
+### 8. Final Validation from Jump Host
 
 ```bash
 curl http://stapp01:8089
@@ -186,8 +173,6 @@ curl http://stapp01:8089
 
 - Apache page successfully loaded
 - Issue resolved
-
----
 
 ##  Final Outcome
 
@@ -203,16 +188,14 @@ curl http://stapp01:8089
 
 ## 🧠 Good to Know
 
-### 🔍 Common Causes of “Service Not Reachable”
+###  Common Causes of “Service Not Reachable”
 
 * Port already in use by another service
 * Service bound to localhost only
 * Firewall blocking inbound traffic
 * Service running but not listening externally
 
----
 
----
 ### Port Conflict Resolution
 
 * Identification: Use netstat -tlnup or ss -tlnup
@@ -220,7 +203,6 @@ curl http://stapp01:8089
 * Solutions: Change port, stop conflicting service, or reconfigure
 * Prevention: Document port assignments, use port ranges
 
----
 
 ###  Useful Troubleshooting Commands
 

@@ -1,4 +1,4 @@
-#  Install and Configure Web Application
+#  Configure LAMP server
 
 xFusionCorp Industries deployed a multi-tier infrastructure to host a WordPress website.
 The shared directory `/vaw/www/html` is already mounted on all App Servers under `/var/www/html`.
@@ -11,9 +11,9 @@ This task ensures:
 
 ---
 
-## 🛠️ Fix Steps (Corrected & Complete)
+##  Steps 
 
-### 1- Install Apache, PHP, and Dependencies (All App Servers)
+### 1. Install Apache, PHP, and Dependencies (All App Servers)
 
 Run the following command **on each App Server**:
 
@@ -33,8 +33,7 @@ sudo yum install -y httpd php php-mysqlnd php-gd php-xml php-mbstring
 * **php-xml** → XML handling used by WordPress
 * **php-mbstring** → Handles multi-byte characters (UTF-8)
 
-
-### 2- Enable Apache Service
+### 2. Enable Apache Service
 
 ```bash
 sudo systemctl enable httpd
@@ -42,8 +41,7 @@ sudo systemctl enable httpd
 
 * Ensures Apache starts automatically after reboot.
 
-
-### 3- Configure Apache to Listen on Port 3002
+### 3. Configure Apache to Listen on Port 3002
 
 ```bash
 sudo vi /etc/httpd/conf/httpd.conf
@@ -58,8 +56,7 @@ Listen 3002
 
 * Changes Apache listening port from default to **3002**.
 
-
-### 4- Restart and Verify Apache
+### 4. Restart and Verify Apache
 
 ```bash
 sudo systemctl restart httpd
@@ -82,7 +79,7 @@ sudo yum install -y mariadb-server
 ```
 
 
-### 5- Enable and Start MariaDB 
+### 5. Enable and Start MariaDB 
 
 ```bash
 sudo systemctl enable mariadb
@@ -104,8 +101,7 @@ sudo systemctl status mariadb
 
 [![MariaDB Service Running on DB Server](../screenshots/Screenshot-day-18-mariaDB-service-running-on-DB-server.png)](../screenshots/Screenshot-day-18-mariaDB-service-running-on-DB-server.png)
 
-
-### 6- Access MariaDB as Root
+### 6. Access MariaDB as Root
 
 ```bash
 sudo mariadb -u root
@@ -113,9 +109,7 @@ sudo mariadb -u root
 
 * Logs into MariaDB using root via Unix socket authentication.
 
----
-
-### 7- Create Database and User
+### 7. Create Database and User
 
 ```sql
 CREATE DATABASE kodekloud_db2;
@@ -144,8 +138,7 @@ FLUSH PRIVILEGES;
 
 [![Database and User Created Successfully](../screenshots/Screenshot-day-18-database-and-user-created-successfully.png)](../screenshots/Screenshot-day-18-database-and-user-created-successfully.png)
 
-
-### 8- Verify Database Configuration
+### 8. Verify Database Configuration
 
 ```sql
 SHOW DATABASES;
@@ -161,9 +154,7 @@ SELECT User, Host FROM mysql.user;
 
 [![Database and User Verification](../screenshots/Screenshot-day-18-database-and-user-verification.png)](../screenshots/Screenshot-day-18-database-and-user-verification.png)
 
----
-
-### 9- Final Application Test via Load Balancer
+### 9. Final Application Test via Load Balancer
 
 * Open the **LBR URL**
 * Click **App** from the top menu
@@ -526,6 +517,8 @@ HAVING COUNT(age) >= 2;
 * `BOOLEAN` replaces `TINYINT(1)`
 * `TIMESTAMP` replaces `DATETIME`
 * Case-sensitive strings use **single quotes**
+
+---
 
 ## 🧠 Good to Know 
 

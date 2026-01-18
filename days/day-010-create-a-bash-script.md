@@ -1,6 +1,6 @@
-#  Create a BASH Script – News Website Backup
+#  Linux Bash Scripts
 
-## 📌 Task Overview
+##  Task Overview
 
 The production support team needs to automate daily backup operations using **Bash scripting**.
 
@@ -14,7 +14,7 @@ To ensure data safety, a backup script must be created to archive this website a
 
 ---
 
-## 🎯 Objective
+##  Objective
 
 Create a Bash script named **`news_backup.sh`** that performs the following tasks:
 
@@ -27,7 +27,7 @@ Create a Bash script named **`news_backup.sh`** that performs the following task
 
 ---
 
-## 🖥️ Environment (Logical Example)
+##  Environment (Logical Example)
 
 | Component         | Value (Example)              |
 |------------------|------------------------------|
@@ -41,9 +41,9 @@ Create a Bash script named **`news_backup.sh`** that performs the following task
 
 ---
 
-## 🛠️ Steps Performed
+##  Steps
 
-### 1️⃣ Install Required Packages
+### 1. Install Required Packages
 
 The script requires the `zip` utility:
 
@@ -51,9 +51,7 @@ The script requires the `zip` utility:
 sudo yum install zip -y
 ```
 
----
-
-### 2️⃣ Configure Password-less SSH Access
+### 2. Configure Password-less SSH Access
 
 SSH key-based authentication must be configured between the application server and the backup server to allow automated, password-less file transfers.
 
@@ -73,7 +71,7 @@ After this step, SSH and SCP connections will work without asking for a password
 
 ---
 
-### 3️⃣ Create the Backup Script
+### 3. Create the Backup Script
 
 Create the script file:
 
@@ -83,7 +81,7 @@ nano /scripts/news_backup.sh
 
 ---
 
-### 4️⃣ Example Bash Script (Generic & Reusable)
+### 4. Example Bash Script (Generic & Reusable)
 
 ```bash
 #!/bin/bash
@@ -105,17 +103,13 @@ zip -r "${BACKUP_DIR}/${ARCHIVE_NAME}" "${SOURCE_DIR}"
 scp "${BACKUP_DIR}/${ARCHIVE_NAME}" "${REMOTE_USER}@${REMOTE_HOST}:${REMOTE_DIR}"
 ```
 
----
-
-### 5️⃣ Set Execute Permission
+### 5. Set Execute Permission
 
 ```bash
 chmod +x /scripts/news_backup.sh
 ```
 
----
-
-### 6️⃣ Execute and Verify
+### 6. Execute and Verify
 
 Run the script:
 
@@ -131,7 +125,7 @@ Expected behavior:
 
 ---
 
-## 📦 Output
+##  Output
 
 **Local archive**
 
@@ -160,7 +154,7 @@ Expected behavior:
 
 ---
 
-### 📁 Backup Concepts
+###  Backup Concepts
 
 * **Full Backup**: Complete copy of data
 * **Incremental Backup**: Only changed files
@@ -169,15 +163,8 @@ Expected behavior:
 
 ---
 
-### 🔐 Secure Remote Copy
+###  Secure Remote Copy
 
 * `scp`: Simple and secure file transfer
 * `rsync`: Optimized for repeated backups
 * **SSH keys**: Required for automation and cron jobs
-
----
-
-###  Conclusion
-
-This task demonstrates how to build a **simple, secure, and automated backup solution** using Bash scripting and SSH authentication.
-The script is modular, reusable, and suitable for production automation.

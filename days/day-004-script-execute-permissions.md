@@ -1,12 +1,8 @@
-# Script Execute Permissions – App Server 2
-
-**Difficulty**: 🟢 Beginner  
-**Category**: Linux Administration  
-**Environment**: Stratos Datacenter
+# Script Execution Permissions
 
 ---
 
-## 🎯 Objective
+##  Objective
 
 The xFusionCorp Industries sysadmin team created a Bash script named `xfusioncorp.sh` to automate backup processes.  
 Although the script is present on the server, it does not have executable permissions.
@@ -17,9 +13,9 @@ Although the script is present on the server, it does not have executable permis
 
 ---
 
-## 🛠️ Steps Performed
+##  Steps 
 
-### 1️⃣ Connect to App Server 2
+### 1. Connect to App Server 2
 
 ```bash
 ssh steve@172.16.238.11
@@ -27,7 +23,7 @@ ssh steve@172.16.238.11
 
 ---
 
-### 2️⃣ Check Current File Permissions
+### 2. Check Current File Permissions
 
 ```bash
 ls -al /tmp/
@@ -43,7 +39,7 @@ ls -al /tmp/
 
 ---
 
-### 3️⃣ Grant Execute Permissions for All Users
+### 3. Grant Execute Permissions for All Users
 
 ```bash
 sudo chmod 755 /tmp/xfusioncorp.sh
@@ -59,7 +55,7 @@ This ensures **every user** can execute the script.
 
 ---
 
-### 4️⃣ Verify the Changes
+### 4. Verify the Changes
 
 ```bash
 ls -al /tmp/
@@ -71,7 +67,7 @@ ls -al /tmp/
 -rwxr-xr-x 1 root root 40 Dec 23 10:24 xfusioncorp.sh
 ```
 
-✅ The script is now executable by all users.
+ The script is now executable by all users.
 
 ---
 
@@ -90,7 +86,7 @@ Unlike compiled binaries, shell scripts must be **readable** by the interpreter 
 
 ---
 
-## 📖 Understanding `chmod`
+##  Understanding `chmod`
 
 ### Permission Values
 
@@ -110,7 +106,7 @@ Unlike compiled binaries, shell scripts must be **readable** by the interpreter 
 
 ---
 
-## 🔢 Numeric (Octal) Mode Example
+## Numeric (Octal) Mode Example
 
 ```bash
 chmod 755 xfusioncorp.sh
@@ -124,7 +120,7 @@ Breakdown:
 
 ---
 
-## ✍️ Symbolic Mode Example
+##  Symbolic Mode Example
 
 ```bash
 chmod u=rwx,g=rx,o=rx xfusioncorp.sh
@@ -132,7 +128,7 @@ chmod u=rwx,g=rx,o=rx xfusioncorp.sh
 
 ---
 
-## 🔐 Common Permission Patterns
+##  Common Permission Patterns
 
 | Mode | Meaning                          |
 | ---- | -------------------------------- |
@@ -143,14 +139,9 @@ chmod u=rwx,g=rx,o=rx xfusioncorp.sh
 
 ---
 
-## ⚠️ Security Notes
+##  Security Notes
 
 * Follow the **Principle of Least Privilege**
 * Avoid `777` unless absolutely necessary
 * `/tmp` uses the **sticky bit** to prevent users from deleting others’ files
 
----
-
-## ✅ Final Result
-
-The script `/tmp/xfusioncorp.sh` on **App Server 2** is now executable by **all users**, fulfilling the task requirements successfully.

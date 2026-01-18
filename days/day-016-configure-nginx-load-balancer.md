@@ -1,4 +1,4 @@
-# ⚖️ Configure NGINX Load Balancer (High Availability Setup)
+# Install and Configure Nginx as an LBR
 
 Day by day traffic was increasing on one of the websites managed by the **Nautilus production support team**, causing performance degradation.
 To improve availability and scalability, the application was migrated to a **high availability architecture** in **Stratos DC**.
@@ -7,9 +7,9 @@ The final pending task was to configure the **LBR (Load Balancer) server** using
 
 ---
 
-## 🛠️ Steps to Fix the Task
+##  Steps
 
-### 1- Enable and Verify Apache on All App Servers
+### 1. Enable and Verify Apache on All App Servers
 
 Login to **App Server 1, App Server 2, and App Server 3** and ensure Apache (`httpd`) is running.
 
@@ -24,9 +24,8 @@ sudo systemctl start httpd
 sudo systemctl enable httpd
 systemctl status httpd
 ```
----
 
-### 2- Identify the Apache Listening Port
+### 2. Identify the Apache Listening Port
 
 Since the task explicitly states **not to change the Apache port**, we must first verify which port Apache is already using.
 
@@ -39,9 +38,7 @@ sudo ss -lntp | grep httpd
 * Apache is listening on **port 3004**
 * Same configuration on all app servers
 
----
-
-### 3- Install and Start NGINX on the LBR Server
+### 3. Install and Start NGINX on the LBR Server
 
 Login to the **LBR server** and install NGINX.
 
@@ -59,9 +56,7 @@ systemctl status nginx
 
 [![NGINX Service Running on LBR Server](../screenshots/Screenshot-day-16-NGINX-service-running-on-LBR-server.png)](../screenshots/Screenshot-day-16-NGINX-service-running-on-LBR-server.png)
 
----
-
-### 4- Configure Load Balancing in `/etc/nginx/nginx.conf`
+### 4. Configure Load Balancing in `/etc/nginx/nginx.conf`
 
 ⚠️ **Important:**
 Only the **main NGINX configuration file** was modified, as required by the task.
@@ -72,7 +67,7 @@ Edit the file:
 sudo nano /etc/nginx/nginx.conf
 ```
 
-#### 🔹 Upstream Configuration (Backend Servers)
+#### * Upstream Configuration (Backend Servers)
 
 ```nginx
 upstream backend_servers {
@@ -90,7 +85,7 @@ upstream backend_servers {
 
 ---
 
-#### 🔹 Server and Proxy Configuration
+#### * Server and Proxy Configuration
 
 ```nginx
 server {
@@ -125,11 +120,9 @@ server {
 * `proxy_connect_timeout` → avoids hanging connections
 * `proxy_read_timeout` → controls backend response wait time
 
----
-
 [![NGINX configuration file](../screenshots/Screenshot-day-16-NGINX-configuration-file-server.png)](../screenshots/Screenshot-day-16-NGINX-configuration-file-server.png)
 
-### 5- Validate and Reload NGINX Configuration
+### 5. Validate and Reload NGINX Configuration
 
 Check syntax:
 
@@ -145,9 +138,7 @@ sudo systemctl reload nginx
 
 [![NGINX Configuration Syntax Check](../screenshots/Screenshot-day-16-NGINX-configuration-syntax-check.png)](../screenshots/Screenshot-day-16-NGINX-configuration-syntax-check.png)
 
----
-
-### 6- Final Testing
+### 6. Final Testing
 
 * Access the application using the **StaticApp** button
 * Confirm the page loads successfully
@@ -185,7 +176,6 @@ Distribute incoming traffic across multiple servers
 **Session Awareness:**
 Some applications require session persistence (sticky sessions)
 
----
 
 ### - NGINX Load Balancer Concepts
 
@@ -196,7 +186,6 @@ Some applications require session persistence (sticky sessions)
 * **Scalability:** New backend servers can be added without downtime
 * **Central Control:** All traffic passes through a single control point (LBR)
 
----
 
 ### - What Is a Reverse Proxy?
 
@@ -226,9 +215,8 @@ Client → NGINX → Apache
 * Enables centralized logging and monitoring
 * Makes load balancing possible
 
----
 
-### - Proxy Headers
+###  Proxy Headers
 
 * **Host:** Preserves the original domain name requested by the client
 * **X-Real-IP:** Allows backend servers to log the real client IP
@@ -238,7 +226,6 @@ Client → NGINX → Apache
 **Importance:**
 Required for logging, security rules, auditing, and application logic
 
----
 
 ### - Timeouts and Stability
 
@@ -251,7 +238,6 @@ Protects the load balancer from backend performance issues
 **Result:**
 More stable and predictable traffic handling
 
----
 
 ### - High Availability Outcome
 
@@ -261,9 +247,8 @@ More stable and predictable traffic handling
 * **Zero-Downtime Scaling:** Servers can be added or removed dynamically
 * **Improved Performance:** Better response times under high traffic
 
----
 
-### - Operational & Troubleshooting Tips
+###  Operational & Troubleshooting Tips
 
 * Always verify backend services **before** configuring the load balancer
 * Use `ss -lntp` to confirm which ports services are listening on
