@@ -2,51 +2,52 @@
 
 ## Task Description
 
-There is a Git server utilized by the Nautilus project teams. Recently, a new developer named Jon joined the team and needs to begin working on a project. To begin, he must fork an existing Git repository. Follow the steps below:
-
-Click on the Gitea UI button located on the top bar to access the Gitea page.
-Login to Gitea server using username jon and password Jon_pass123.
-Once logged in, locate the Git repository named sarah/story-blog and fork it under the jon user.
-Note: For tasks requiring web UI changes, screenshots are necessary for review purposes. Additionally, consider utilizing screen recording software such as loom.com to record and share your task completion process.
+A new developer, **Jon**, needs to begin contributing to the Nautilus project by forking an existing repository using the Gitea web interface.
 
 ---
 
-## Execution Steps
+## Requirements
 
-1. Open the **Gitea UI** from the top navigation bar.
-2. Log in using:
+### 1. Access Gitea
 
-   * Username: jon
-   * Password: Jon_pass123
-3. Search for the repository:
-
-   ```
-   sarah/story-blog
-   ```
-4. Click **Fork** and confirm the owner as:
-
-   ```
-   jon
-   ```
+* Open the **Gitea UI** from the top navigation bar.
 
 ---
 
-## Verification
+### 2. Login Credentials
 
-* Ensure the repository appears under Jon’s account.
-* Confirm the forked repository name matches `story-blog`.
+* **Username:** jon
+* **Password:** Jon_pass123
 
 ---
 
-## Evidence
+### 3. Fork Repository
 
-* Attach screenshots of:
+* Locate the repository:
 
-  * Login page
-  * Repository before fork
-  * Forked repository under jon
+```
+sarah/story-blog
+```
 
-* Optional: Provide a screen recording of the full process.
+* Click **Fork** and select the user:
+
+```
+jon
+```
+
+---
+
+### 4. Evidence
+
+* Take screenshots of the fork process.
+* Optionally, record the steps using a screen recording tool.
+
+---
+
+## Expected Result
+
+* The repository `story-blog` is successfully forked under the `jon` account.
+* Proof of completion is available.
 
 ---
 
