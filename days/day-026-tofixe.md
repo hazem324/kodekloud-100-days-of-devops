@@ -26,8 +26,6 @@ This document explains **the steps and commands used** to complete the task.
 ssh natasha@<storage-server-ip>
 ```
 
----
-
 ### 2. Move into the Git repository
 
 **Purpose:** Work inside the correct Git project directory.
@@ -35,8 +33,6 @@ ssh natasha@<storage-server-ip>
 ```sh
 cd /usr/src/kodekloudrepos/apps
 ```
-
----
 
 ### 3. Check current branch and remotes
 
@@ -47,8 +43,6 @@ sudo git branch
 sudo git remote -v
 ```
 
----
-
 ### 4. Add the new remote `dev_apps`
 
 **Purpose:** Link the local repository to the new remote repository.
@@ -58,8 +52,6 @@ sudo git remote add dev_apps /opt/xfusioncorp_apps.git
 sudo git remote -v
 ```
 
----
-
 ### 5. Copy `index.html` into the repository
 
 **Purpose:** Add the required file to be tracked by Git.
@@ -68,8 +60,6 @@ sudo git remote -v
 sudo cp /tmp/index.html .
 ```
 
----
-
 ### 6. Ensure you are on the `master` branch
 
 **Purpose:** Commit changes to the correct branch.
@@ -77,8 +67,6 @@ sudo cp /tmp/index.html .
 ```sh
 sudo git checkout master
 ```
-
----
 
 ### 7. Add and commit the file
 
@@ -89,8 +77,6 @@ sudo git add index.html
 sudo git commit -m "Add index.html file"
 ```
 
----
-
 ### 8. Push `master` branch to `dev_apps` remote
 
 **Purpose:** Send local commits to the new remote repository.
@@ -98,8 +84,6 @@ sudo git commit -m "Add index.html file"
 ```sh
 sudo git push dev_apps master
 ```
-
----
 
 ## Important Notes
 
