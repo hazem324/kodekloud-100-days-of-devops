@@ -1,4 +1,4 @@
-# Git Branching and Merge Task – Nautilus Project
+# Day 25 - Git Merge Branches
 
 ## Task Description
 
@@ -68,3 +68,5 @@ Push both branches to the remote repository:
 * Both branches are successfully pushed to the origin remote.
 
 ---
+
+End of Task

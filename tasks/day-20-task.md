@@ -1,22 +1,23 @@
-Perfect, I will format this one in the same clean style (not keeping the original wording):
-
-# PHP Application Deployment Task – Nautilus Project
+# Day 20 - Configure Nginx + PHP-FPM Using Unix Sock
 
 ## Task Description
 
 The Nautilus team is preparing to deploy a new PHP-based application on the Stratos DC infrastructure.
-The application must be served using Nginx and PHP-FPM on App Server 1.
 
 ---
 
 ## Requirements
 
-### 1. Web Server Setup
+### 1. Nginx Setup
 
 * Install **Nginx** on App Server 1.
 * Configure Nginx to:
 
-  * Listen on port **8092**
+  * Listen on port:
+
+    ```
+    8092
+    ```
   * Use document root:
 
     ```
@@ -27,25 +28,25 @@ The application must be served using Nginx and PHP-FPM on App Server 1.
 
 ### 2. PHP-FPM Setup
 
-* Install **PHP-FPM version 8.2** on App Server 1.
-* Configure PHP-FPM to use the Unix socket:
+* Install **PHP-FPM 8.2** on App Server 1.
+* Configure the Unix socket:
 
   ```
   /var/run/php-fpm/default.sock
   ```
-* Create parent directories if they do not exist.
+* Create parent directories if required.
 
 ---
 
 ### 3. Integration
 
-* Configure Nginx to forward PHP requests to PHP-FPM using the above socket.
+* Configure Nginx to forward PHP requests to PHP-FPM.
 
 ---
 
 ### 4. Testing
 
-From the Jump Host, verify using:
+From the Jump Host, run:
 
 ```
 curl http://stapp01:8092/index.php
@@ -55,19 +56,17 @@ curl http://stapp01:8092/index.php
 
 ## Expected Result
 
-* Nginx serves the application on port 8092.
-* PHP files are correctly processed by PHP-FPM.
-* The curl command returns valid PHP output.
+* Nginx and PHP-FPM work together correctly.
+* PHP files are processed and returned successfully.
+* The curl command produces valid output.
 
 ---
 
 ## Notes
 
 * Do not modify `index.php` or `info.php`.
-* Files are already present under `/var/www/html`.
+* Files already exist under `/var/www/html`.
 
 ---
 
 End of Task
-
-Send the next task when ready.

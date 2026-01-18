@@ -1,4 +1,4 @@
-# DevOps Day 26 – Git Remote Management Task
+# Day 26 - Git Manage Remotes
 
 ## Task Description
 
@@ -70,3 +70,5 @@ dev_apps
 * The master branch is successfully pushed to `dev_apps`.
 
 ---
+
+End of Task

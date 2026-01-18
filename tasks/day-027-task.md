@@ -1,4 +1,4 @@
-# DevOps Day 27 – Git Revert Task
+# Day 27 - Git Revert Some Changes
 
 ## Task Description
 

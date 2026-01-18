@@ -1,4 +1,4 @@
-# Git Repository Fork Task – Nautilus Project
+# Day 23 - Fork a Git Repository
 
 ## Task Description
 
