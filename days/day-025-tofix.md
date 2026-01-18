@@ -85,21 +85,21 @@ This pushes the merged changes to the `master` branch on `/opt/official.git`.
 
 ## 🧠 Good to Know
 
-* ###  Git Merge Types
+###  Git Merge Types
 
-* **Fast-forward Merge**
+* **Fast-forward Merge :**
   Occurs when the target branch has no new commits since branching.
 
-* **Three-way Merge**
+* **Three-way Merge :**
   Creates a merge commit when histories have diverged.
 
-* **Squash Merge**
+* **Squash Merge :**
   Combines multiple commits into one before merging.
 
-* **Rebase**
+* **Rebase :**
   Reapplies commits on top of another branch for linear history.
 
-### . Merge Workflow
+###  Merge Workflow
 
 1. Checkout the target branch (`master`)
 2. Merge the source branch (`devops`)
