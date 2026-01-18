@@ -1,17 +1,4 @@
-Perfect 👍
-Below is a **clean, corrected README.md** based **exactly on the steps you followed**, with:
-
-* ✅ General comments
-* ✅ Example commands actually used
-* ✅ One-line simple explanation for each step
-* ✅ Adapted to **apps / dev_apps / xfusioncorp_apps.git**
-* ✅ Mentions `sudo` and the *dubious ownership* context (important)
-
-You can copy-paste this directly as `README.md`.
-
----
-
-# Git Manage Remotes – Apps Repository
+# Git Manage Remotes
 
 The xFusionCorp development team maintains a project under `/opt/apps.git`, which is cloned on the Storage Server at `/usr/src/kodekloudrepos/apps`.
 Recent updates required adding a **new Git remote**, committing a file, and pushing changes to that remote.
@@ -31,7 +18,7 @@ This document explains **the steps and commands used** to complete the task.
 
 ## Steps
 
-### 1️⃣ Login to the Storage Server
+### 1. Login to the Storage Server
 
 **Purpose:** Access the server where the repository exists.
 
@@ -41,7 +28,7 @@ ssh natasha@<storage-server-ip>
 
 ---
 
-### 2️⃣ Move into the Git repository
+### 2. Move into the Git repository
 
 **Purpose:** Work inside the correct Git project directory.
 
@@ -51,7 +38,7 @@ cd /usr/src/kodekloudrepos/apps
 
 ---
 
-### 3️⃣ Check current branch and remotes
+### 3. Check current branch and remotes
 
 **Purpose:** Verify repository status before making changes.
 
@@ -62,7 +49,7 @@ sudo git remote -v
 
 ---
 
-### 4️⃣ Add the new remote `dev_apps`
+### 4. Add the new remote `dev_apps`
 
 **Purpose:** Link the local repository to the new remote repository.
 
@@ -73,7 +60,7 @@ sudo git remote -v
 
 ---
 
-### 5️⃣ Copy `index.html` into the repository
+### 5. Copy `index.html` into the repository
 
 **Purpose:** Add the required file to be tracked by Git.
 
@@ -83,7 +70,7 @@ sudo cp /tmp/index.html .
 
 ---
 
-### 6️⃣ Ensure you are on the `master` branch
+### 6. Ensure you are on the `master` branch
 
 **Purpose:** Commit changes to the correct branch.
 
@@ -93,7 +80,7 @@ sudo git checkout master
 
 ---
 
-### 7️⃣ Add and commit the file
+### 7. Add and commit the file
 
 **Purpose:** Save changes into Git history.
 
@@ -104,7 +91,7 @@ sudo git commit -m "Add index.html file"
 
 ---
 
-### 8️⃣ Push `master` branch to `dev_apps` remote
+### 8. Push `master` branch to `dev_apps` remote
 
 **Purpose:** Send local commits to the new remote repository.
 
@@ -135,7 +122,7 @@ git config --global --add safe.directory /usr/src/kodekloudrepos/apps
 
 ---
 
-## Good to Know
+## 🧠 Good to Know
 
 ### Git Remotes
 
@@ -152,18 +139,3 @@ git config --global --add safe.directory /usr/src/kodekloudrepos/apps
 | Remove remote  | `git remote remove name`  |
 | Push to remote | `git push remote branch`  |
 
----
-
-## Summary (One Line)
-
-> We added a new remote, committed `index.html` to `master`, and pushed it to the `dev_apps` repository.
-
----
-
-If you want, I can:
-
-* ✅ Shorten this README for exams
-* ✅ Convert it to **KodeKloud-style solution format**
-* ✅ Add screenshots explanations
-
-Just tell me 👌
