@@ -1,8 +1,3 @@
-Here is the **corrected and exam-safe README**, written **in exactly the same format** you requested, but **fixed** so it reflects the **right Git usage** and will **pass KodeKloud validation**.
-
----
-
-````markdown
 # Git Revert Some Changes
 
 The Nautilus application development team was working on a git repository
