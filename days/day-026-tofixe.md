@@ -85,25 +85,6 @@ sudo git commit -m "Add index.html file"
 sudo git push dev_apps master
 ```
 
-## Important Notes
-
-### ⚠️ Dubious Ownership Warning
-
-If you see this error:
-
-```text
-fatal: detected dubious ownership in repository
-```
-
-It means the repository is owned by another user.
-Using `sudo` is acceptable in this environment (KodeKloud lab).
-
-Alternative fix (optional):
-
-```sh
-git config --global --add safe.directory /usr/src/kodekloudrepos/apps
-```
-
 ---
 
 ## 🧠 Good to Know
