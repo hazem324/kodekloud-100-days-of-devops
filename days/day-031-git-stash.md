@@ -1,10 +1,4 @@
-Understood. Below is a **revised README** that **keeps your exact Day 31 work** and **adds a complete “Good to Know” section**, matching the style of your example and KodeKloud expectations.
-
-You can replace your current `README.md` with this.
-
----
-
-# Git Stash Restore – Day 31
+#  Git Stash
 
 The Nautilus application development team was working on a Git repository located at
 `/usr/src/kodekloudrepos/blog` on the Storage server in Stratos DC.
