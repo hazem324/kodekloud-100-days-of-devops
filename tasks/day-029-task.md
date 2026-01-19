@@ -1,4 +1,4 @@
-# Pull Request Review and Merge Task – Gitea
+# Day 29 - Manage Git Pull Requests
 
 ## Task Description
 

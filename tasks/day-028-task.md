@@ -1,4 +1,4 @@
-# Selective Commit Merge Task – Nautilus Project
+# Day 28 - Git Cherry Pick
 
 ## Task Description
 
