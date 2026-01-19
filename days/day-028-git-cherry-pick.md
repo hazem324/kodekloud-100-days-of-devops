@@ -37,7 +37,7 @@ The Nautilus application development team has been working on a project reposito
     git push
     ```
 
-## Good to Know?
+## 🧠 Good to Know
 
 ### Cherry-Pick Fundamentals
 

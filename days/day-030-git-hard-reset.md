@@ -65,7 +65,7 @@ sudo git push --force
 
 ---
 
-## Good to Know
+## 🧠 Good to Know
 
 ### Git Reset Types
 

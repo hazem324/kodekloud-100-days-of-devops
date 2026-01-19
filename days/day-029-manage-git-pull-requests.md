@@ -119,7 +119,7 @@ The Pull Request status should now be **Merged**.
 
 ---
 
-## Good to Know?
+## 🧠 Good to Know
 
 ### Pull Request Fundamentals
 
