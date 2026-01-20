@@ -108,7 +108,6 @@ sudo git push
   git stash drop stash@{n}
   ```
 
----
 
 ### Advanced Stash Usage
 
