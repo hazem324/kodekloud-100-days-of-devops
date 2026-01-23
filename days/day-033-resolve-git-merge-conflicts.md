@@ -1,4 +1,4 @@
-# Git Pull and Conflict Resolution
+# Resolve Git Merge Conflicts
 
 ## Overview
 
@@ -39,6 +39,11 @@ git commit -m "mouse"
 ```sh
 git push origin master
 ```
+
+6. **Verify from the Gitea UI**:
+
+[![Verify from the Gitea UI](../screenshots/Screenshot-day-33-verify-from-gitea.png)](../screenshots/Screenshot-day-33-verify-from-gitea.png)
+
 
 ---
 
