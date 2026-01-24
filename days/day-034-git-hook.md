@@ -1,9 +1,4 @@
-Below is a **clean, task-compliant README** generated **based strictly on your actual work**, while keeping the **same structure and tone** as the example you provided.
-I have adapted paths, repository names, user, and hook logic to exactly match **Day 34**.
-
----
-
-# Configure Git Post-Update Hook (Day 34)
+# Git Hook
 
 The Nautilus application development team was working on a Git repository **`/opt/cluster.git`** which is cloned under **`/usr/src/kodekloudrepos`** directory on the Storage server in Stratos DC. The team wanted to configure a Git hook to automate release tagging. Below are the task details and the steps followed to complete it.
 
