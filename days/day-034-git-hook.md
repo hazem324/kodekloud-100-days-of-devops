@@ -30,16 +30,12 @@ ssh natasha@ststor01
 cd /usr/src/kodekloudrepos/cluster
 ```
 
----
-
 ### 2. Check Current Branch and Switch to `master`
 
 ```sh
 git branch
 git switch master
 ```
-
----
 
 ### 3. Merge `feature` Branch into `master`
 
@@ -48,8 +44,6 @@ git merge feature
 ```
 
 This completes the merge of feature changes into the master branch.
-
----
 
 ### 4. Create the `post-update` Hook in Bare Repository
 
@@ -98,8 +92,6 @@ Make the hook executable:
 ```sh
 chmod +x post-update
 ```
-
----
 
 ### 5. Test the Hook by Pushing to `master`
 
