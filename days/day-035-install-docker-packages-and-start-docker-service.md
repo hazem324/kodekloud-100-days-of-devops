@@ -1,4 +1,4 @@
-# Setup Docker Installation – App Server 1
+# Install Docker Packages and Start Docker Service
 
 The Nautilus DevOps team plans to containerize multiple applications after a discussion with the application development team.
 As part of initial testing, Docker Engine and Docker Compose are installed on **App Server 1**, and the Docker service is started.
