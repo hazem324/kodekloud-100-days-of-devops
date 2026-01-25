@@ -18,8 +18,9 @@ Verify the container status:
 ```sh
 sudo docker ps -a
 ```
-
 The output should show the container `nginx_2` with status **Up**.
+
+[![Verify the container status](../screenshots/Screenshot-day-36-verify-the-container-status.png)](../screenshots/Screenshot-day-36-verify-the-container-status.png)
 
 ## Good to Know?
 
