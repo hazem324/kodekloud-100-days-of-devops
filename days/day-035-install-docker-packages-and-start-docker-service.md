@@ -21,8 +21,6 @@ Install `dnf-plugins-core`, which provides the `dnf config-manager` command:
 sudo dnf install -y dnf-plugins-core
 ```
 
----
-
 ### 2. Add the Official Docker Repository
 
 Add the Docker CE repository so DNF can locate Docker packages:
@@ -31,8 +29,6 @@ Add the Docker CE repository so DNF can locate Docker packages:
 sudo dnf config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
 ```
 
----
-
 ### 3. Install Docker Engine and Compose Plugin
 
 Install Docker Engine, CLI, container runtime, Buildx, and Docker Compose (v2 plugin):
@@ -40,8 +36,6 @@ Install Docker Engine, CLI, container runtime, Buildx, and Docker Compose (v2 pl
 ```sh
 sudo dnf install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 ```
-
----
 
 ### 4. Enable and Start Docker Service
 
@@ -56,8 +50,6 @@ Verify Docker status:
 ```sh
 sudo systemctl status docker
 ```
-
----
 
 ### 5. Verify Installation
 
