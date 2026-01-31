@@ -24,8 +24,6 @@ This document explains the steps taken to complete the pending task successfully
 ssh tony@172.16.238.10
 ```
 
----
-
 ### 2. Verify Running Container
 
 ```sh
@@ -37,8 +35,6 @@ CONTAINER ID   IMAGE          COMMAND       CREATED         STATUS         PORTS
 2252e4c1c0be   ubuntu:18.04   "/bin/bash"   5 minutes ago   Up 5 minutes             kkloud
 ```
 
----
-
 ### 3. Access the Container as Root
 
 ```sh
@@ -49,8 +45,6 @@ docker exec -it -u 0 2252e4c1c0be /bin/bash
 root@2252e4c1c0be:/#
 ```
 
----
-
 ### 4. Install Apache and Vim
 
 ```sh
@@ -59,8 +53,6 @@ apt install apache2 vim -y
 ```
 
 > Apache2 and Vim are now installed inside the container.
-
----
 
 ### 5. Configure Apache to Listen on Port 8084
 
@@ -82,8 +74,6 @@ Listen 80
 
 > No IP address is specified, so Apache listens on all interfaces.
 
----
-
 #### 5.2 Update Default Virtual Host
 
 ```sh
@@ -99,8 +89,6 @@ vi /etc/apache2/sites-enabled/000-default.conf
 **After**
 
 [![Apache Default Virtual Host Configuration](../screenshots/Screenshot-day-40-apache-default-virtual-host-configuration.png)](../screenshots/Screenshot-day-40-apache-default-virtual-host-configuration.png)
-
----
 
 ### 6. Start and Restart Apache Service
 
