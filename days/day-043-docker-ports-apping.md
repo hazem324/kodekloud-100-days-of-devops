@@ -30,8 +30,6 @@ ssh tony@stapp01
 docker pull nginx:alpine
 ```
 
-This downloads the lightweight Alpine-based NGINX image from Docker Hub.
-
 ### 3. Create and Run the Container with Port Mapping
 
 ```sh
