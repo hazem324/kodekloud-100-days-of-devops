@@ -1,4 +1,4 @@
-# Create a Docker File
+# Write a Docker File
 
 As per recent requirements shared by the Nautilus application development team, they need custom images created for one of their projects. Several of the initial testing requirements have already been shared with the DevOps team.
 
@@ -65,8 +65,6 @@ Therefore, a Docker file has been created at:
 * **Layered Build**: Each instruction creates a new image layer
 * **Caching**: Docker reuses unchanged layers to speed up builds
 
----
-
 ### Common Dockerfile Instructions Used
 
 * **FROM** – Defines the base image
@@ -75,15 +73,11 @@ Therefore, a Docker file has been created at:
 * **EXPOSE** – Documents the port used by the container
 * **CMD** – Defines the default command when the container starts
 
----
-
 ### Apache in Docker
 
 * **Port Configuration**: Apache listens on a custom port instead of default 80
 * **Foreground Mode**: Apache must run in the foreground to keep the container running
 * **Minimal Changes**: Only required configuration is adjusted to meet task constraints
-
----
 
 ### Best Practices Highlighted
 
