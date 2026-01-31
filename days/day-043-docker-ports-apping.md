@@ -1,5 +1,4 @@
-Below is a **clean, task-accurate README.md** generated from **your actual work** on **Day 43**, following the same structure and quality as your example.
-# Docker Ports Mapping 
+#  Docker Ports Mapping
 
 The Nautilus DevOps team is planning to host an application on an **nginx-based container**. One of the tickets requires setting up an nginx container on **Application Server 1** in the **Stratos Datacenter**.
 
