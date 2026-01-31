@@ -1,4 +1,4 @@
-# Create a Docker Image From a Container (Day 39)
+# Create a Docker Image From Container
 
 One of the Nautilus developers was testing new changes inside a running container and wanted to keep a backup of those changes. The DevOps team was requested to create a new Docker image from the existing container.
 
