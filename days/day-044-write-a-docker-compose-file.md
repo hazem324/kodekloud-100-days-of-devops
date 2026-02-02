@@ -13,8 +13,6 @@ The DevOps team is responsible for setting up the environment on **App Server 3*
 ssh tony@stapp03
 ```
 
----
-
 ### 2. Verify Docker Is Running
 
 ```sh
@@ -23,8 +21,6 @@ docker ps
 
 If Docker is running, the command will execute without errors.
 
----
-
 ### 3. Create Docker Compose File
 
 ```sh
@@ -32,15 +28,11 @@ sudo mkdir -p /opt/docker
 sudo touch /opt/docker/docker-compose.yml
 ```
 
----
-
 ### 4. Edit `docker-compose.yml`
 
 Open the file and add the following content:
 
 Open the file in editor and copy paste the contents from this [docker-compose](../files/docker-compose.yaml)
-
----
 
 ### 5. Start the Container
 
@@ -48,8 +40,6 @@ Open the file in editor and copy paste the contents from this [docker-compose](.
 ```sh
 sudo docker compose -f /opt/docker/docker-compose.yml up -d
 ```
-
----
 
 ### 6. Verify Container Status
 
@@ -63,8 +53,6 @@ Expected output:
 CONTAINER ID   IMAGE          COMMAND              CREATED          STATUS          PORTS                  NAMES
 abcd1234efgh   httpd:latest  "httpd-foreground"   1 minute ago     Up 1 minute     0.0.0.0:6100->80/tcp   httpd
 ```
-
----
 
 ### 7. Verify Website Access
 
