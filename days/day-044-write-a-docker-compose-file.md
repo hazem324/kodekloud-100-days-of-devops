@@ -24,8 +24,7 @@ If Docker is running, the command will execute without errors.
 ### 3. Create Docker Compose File
 
 ```sh
-sudo mkdir -p /opt/docker
-sudo touch /opt/docker/docker-compose.yml
+sudo vi /opt/docker/docker-compose.yml
 ```
 
 ### 4. Edit `docker-compose.yml`
