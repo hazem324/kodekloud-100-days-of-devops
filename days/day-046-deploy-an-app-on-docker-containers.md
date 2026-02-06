@@ -87,8 +87,6 @@ services:
       MYSQL_ROOT_PASSWORD: R00tP@ssw0rd!
 ```
 
----
-
 ### 4. Deploy the stack
 
 > Docker Compose v2 is installed on the server.
