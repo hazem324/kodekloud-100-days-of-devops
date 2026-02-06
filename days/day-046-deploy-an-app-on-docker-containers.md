@@ -43,15 +43,10 @@ After running Docker Compose, the application should be accessible using:
 curl <server-ip or hostname>:3000/
 ```
 
-> **Note:** Once you click the **FINISH** button, all running or stopped containers will be destroyed and the stack will be redeployed using your compose file.
-
 ---
 
 ## Steps
 
-In this daily challenge, we are going to dockerize a **2-tier application** using Docker Compose. The stack consists of a PHP-Apache web container and a MariaDB database container.
-
----
 
 ### 1. Login to App Server 3
 
@@ -59,16 +54,12 @@ In this daily challenge, we are going to dockerize a **2-tier application** usin
 ssh banner@stapp03
 ```
 
----
-
 ### 2. Create the Docker Compose file
 
 ```sh
 sudo mkdir -p /opt/data
 sudo touch /opt/data/docker-compose.yml
 ```
-
----
 
 ### 3. Add the following content to `/opt/data/docker-compose.yml`
 
@@ -107,8 +98,6 @@ cd /opt/data
 docker compose up -d
 ```
 
----
-
 ### 5. Verify running containers
 
 ```sh
@@ -119,8 +108,6 @@ Expected containers:
 
 * `php_host`
 * `mysql_host`
-
----
 
 ### 6. Test the application
 
