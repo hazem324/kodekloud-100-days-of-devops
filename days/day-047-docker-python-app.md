@@ -21,7 +21,7 @@ The goal is to create a Docker image, run a container with proper port mapping, 
 
 ---
 
-## Implementation Steps
+##  Steps
 
 ### 1. Access App Server and Navigate to Project Directory
 
@@ -29,8 +29,6 @@ The goal is to create a Docker image, run a container with proper port mapping, 
 sudo -i
 cd /python_app
 ```
-
----
 
 ### 2. Create the Dockerfile
 
@@ -56,8 +54,6 @@ EXPOSE 6300
 CMD ["python", "server.py"]
 ```
 
----
-
 ### 3. Build the Docker Image
 
 ```sh
@@ -69,8 +65,6 @@ Verify the image:
 ```sh
 docker images | grep nautilus/python-app
 ```
-
----
 
 ### 4. Run the Container
 
@@ -86,8 +80,6 @@ Verify container status:
 ```sh
 docker ps | grep pythonapp_nautilus
 ```
-
----
 
 ### 5. Test the Application
 
@@ -107,35 +99,11 @@ curl http://localhost:8096
 * Applications must bind to `0.0.0.0`, not `127.0.0.1`, to be reachable from the host.
 * Port mapping follows the format: `HOST_PORT:CONTAINER_PORT`.
 
----
-
 ### Image Build Considerations
 
 * Docker caches layers; modifying `requirements.txt` invalidates dependency layers.
 * Using `--no-cache-dir` reduces final image size.
 * Avoid copying unnecessary files (use `.dockerignore`).
-
----
-
-### Runtime Debugging
-
-* View application logs:
-
-  ```sh
-  docker logs pythonapp_nautilus
-  ```
-* Enter the running container:
-
-  ```sh
-  docker exec -it pythonapp_nautilus /bin/bash
-  ```
-* Test inside container:
-
-  ```sh
-  curl http://localhost:6300
-  ```
-
----
 
 ### Operational Tips
 
