@@ -42,8 +42,6 @@ Expected output:
 pod/pod-httpd created
 ```
 
----
-
 ### 3. Verify Pod Status
 
 Check if the pod is running:
