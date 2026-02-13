@@ -9,8 +9,6 @@ Your task is to:
 * Upgrade the container image to **nginx:1.17**
 * Ensure all pods are running successfully after the update
 
-> Note: The `kubectl` tool on `jump_host` is already configured to access the Kubernetes cluster.
-
 ---
 
 ## Steps
@@ -63,8 +61,6 @@ deployment.apps/nginx-deployment image updated
 
 This automatically triggers a rolling update.
 
----
-
 ### 4. Monitor Rollout Progress
 
 ```sh
@@ -78,8 +74,6 @@ deployment "nginx-deployment" successfully rolled out
 ```
 
 This confirms the update completed successfully.
-
----
 
 ### 5. Verify Pods After Update
 
@@ -95,8 +89,6 @@ nginx-deployment-5dd558cf95-g8p29   1/1     Running   0          36s
 nginx-deployment-5dd558cf95-qrg8h   1/1     Running   0          38s
 nginx-deployment-5dd558cf95-rzbqk   1/1     Running   0          45s
 ```
-
----
 
 ### 6. Check Deployment Revision History
 
