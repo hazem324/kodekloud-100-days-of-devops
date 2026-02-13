@@ -1,4 +1,4 @@
-# Day 50 – Configure Resource Limits for a Kubernetes Pod 🚀
+# Day 50 – Set Resource Limits in Kubernetes Pods
 
 The Nautilus DevOps team observed performance issues due to missing resource constraints in some Kubernetes workloads.
 To address this, a Pod was created with defined **CPU and memory requests and limits**.
