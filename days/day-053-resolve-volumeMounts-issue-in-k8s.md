@@ -109,8 +109,6 @@ containers:
 
 > ⚠ Important: `subPath: nginx.conf` must be present.
 
----
-
 ### 2. Recreate the Pod
 
 Volume mounts are immutable, so we must delete and recreate:
@@ -132,8 +130,6 @@ Status should be:
 2/2 Running
 ```
 
----
-
 ### 3. Copy Application File
 
 Copy `index.php` into nginx document root:
@@ -141,8 +137,6 @@ Copy `index.php` into nginx document root:
 ```bash
 kubectl cp /home/thor/index.php nginx-phpfpm:/var/www/html/index.php -c nginx-container
 ```
-
----
 
 ### 4. Test
 
