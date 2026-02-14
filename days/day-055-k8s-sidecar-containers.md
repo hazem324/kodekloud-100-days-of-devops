@@ -1,6 +1,6 @@
 #  Kubernetes Sidecar Containers
 
-## 📖 Overview
+##  Overview
 
 This task demonstrates the **Sidecar pattern** in Kubernetes.
 
@@ -39,15 +39,11 @@ vi webserver.yml
 
 Paste the [`FILE`](../files/k8s_webserver_55d.yml) and save.
 
----
-
 ## 2. Deploy the Pod
 
 ```bash
 kubectl apply -f webserver.yml
 ```
-
----
 
 ## 3. Verify Pod Status
 
@@ -55,8 +51,6 @@ kubectl apply -f webserver.yml
 kubectl get pods
 ```
 [![Verify Pod Status](../screenshots/Screenshot-day-55-verify-pod-running.png)](../screenshots/Screenshot-day-55-verify-pod-running.png)
-
----
 
 ## 4. Describe the Pod
 
