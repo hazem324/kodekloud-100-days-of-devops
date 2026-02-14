@@ -1,4 +1,4 @@
-# Resolve Volume Mount Mismatch – Nginx & PHP-FPM (Kubernetes)
+# Resolve VolumeMounts Issue in Kubernetes
 
 We encountered an issue with our **Nginx + PHP-FPM multi-container Pod** where the website stopped working.
 
