@@ -1,4 +1,4 @@
-# Execute Rollback in Kubernetes Cluster
+# Revert Deployment to Previous Version in Kubernetes
 
 Earlier today, the Nautilus DevOps team deployed a new release for an application. However, a customer reported a bug related to this release. The objective was to revert the deployment to the previous stable revision.
 
@@ -62,7 +62,6 @@ kubectl rollout status deployment/nginx-deployment
 * **Rollback** → Revert to a previous stable version.
 * Kubernetes automatically stores revision history for Deployments.
 
----
 
 ##  How Kubernetes Tracks Revisions
 
@@ -77,7 +76,6 @@ revisionHistoryLimit: 10
 
 If set to `0`, rollback will not be possible.
 
----
 
 ##  Common Rollout Commands
 
@@ -89,7 +87,6 @@ If set to `0`, rollback will not be possible.
 | Rollback to specific revision | `kubectl rollout undo deployment/nginx-deployment --to-revision=2` |
 | Restart deployment            | `kubectl rollout restart deployment/nginx-deployment`              |
 
----
 
 ##  When Should You Rollback?
 
@@ -101,7 +98,6 @@ Rollback is commonly used when:
 * Performance degradation
 * Incorrect configuration (env variables, image tag, etc.)
 
----
 
 ##  Deep Verification Commands
 
@@ -123,9 +119,8 @@ To inspect Pod image version:
 kubectl describe pod <pod-name>
 ```
 
----
 
-## 🧠 Production Insight
+##  Production Insight
 
 * Rollbacks are safe only if previous versions are stable.
 * Always use proper **image tagging** (avoid `latest` in production).
