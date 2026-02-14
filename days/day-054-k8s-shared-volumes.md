@@ -17,7 +17,7 @@ In this task, we created a Pod named `volume-share-nautilus` with two containers
 
 ## Steps
 
-1. Create the `volume-share-nautilus.yml` file with the required Pod configuration.
+1. Create the [`volume-share-nautilus.yml`](../files/k8s_shared_volumes_54d.yml) file with the required Pod configuration.
 
 2. Create the Pod:
 
