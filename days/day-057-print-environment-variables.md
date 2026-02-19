@@ -1,4 +1,4 @@
-# Print Environment Variables – Kubernetes Pod
+# Print Environment Variables
 
 The Nautilus DevOps team needs to validate a sample configuration that prints greeting messages using environment variables inside a Kubernetes Pod.
 
