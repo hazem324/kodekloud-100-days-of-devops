@@ -7,7 +7,7 @@ The objective was to investigate the issue directly from the `jump_host` and res
 
 ---
 
-#  Step-by-Step Troubleshooting Process
+#  Step-by-Step
 
 
 ## 1. Check Pod Logs
