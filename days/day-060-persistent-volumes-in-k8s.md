@@ -22,22 +22,7 @@ In this task, we manually configure storage using a `PersistentVolume`, bind it 
 
 ## 1. Create the PersistentVolume
 
-Create file: `pv.yaml`
-
-```yaml
-apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: pv-devops
-spec:
-  storageClassName: manual
-  capacity:
-    storage: 3Gi
-  accessModes:
-    - ReadWriteOnce
-  hostPath:
-    path: /mnt/dba
-```
+Create file: [`pv.yaml`](../files/k8s_pv_d60.yml)
 
 ### Apply the PV:
 
@@ -51,31 +36,9 @@ kubectl apply -f pv.yaml
 kubectl get pv
 ```
 
-Expected status:
-
-```
-Available
-```
-
----
-
 ## 2. Create the PersistentVolumeClaim
 
-Create file: `pvc.yaml`
-
-```yaml
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: pvc-devops
-spec:
-  storageClassName: manual
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 1Gi
-```
+Create file: [`pvc.yaml`](../files/k8s_pvc_d60.yml)
 
 ### Apply the PVC:
 
@@ -88,46 +51,15 @@ kubectl apply -f pvc.yaml
 ```bash
 kubectl get pvc
 ```
-
-Expected status:
-
-```
-Bound
-```
-
-✔️ PVC automatically binds to `pv-devops` because:
+ PVC automatically binds to `pv-devops` because:
 
 * Same `storageClassName`
 * Requested size (1Gi) ≤ PV capacity (3Gi)
 * Same access mode
 
----
-
 ## 3. Create the Pod and Mount the Volume
 
 Create file: `pod.yaml`
-
-```yaml
-apiVersion: v1
-kind: Pod
-metadata:
-  name: pod-devops
-  labels:
-    app: web-devops
-spec:
-  containers:
-    - name: container-devops
-      image: nginx:latest
-      ports:
-        - containerPort: 80
-      volumeMounts:
-        - name: devops-storage
-          mountPath: /usr/share/nginx/html
-  volumes:
-    - name: devops-storage
-      persistentVolumeClaim:
-        claimName: pvc-devops
-```
 
 ### Apply the Pod:
 
@@ -140,37 +72,12 @@ kubectl apply -f pod.yaml
 ```bash
 kubectl get pods
 ```
-
-Expected status:
-
-```
-Running
-```
-
  Why mount at `/usr/share/nginx/html`?
 Because this is the default document root for `nginx`. Any file inside `/mnt/dba` on the node will be served as web content.
 
----
-
 ## 4. Create the NodePort Service
 
-Create file: `service.yaml`
-
-```yaml
-apiVersion: v1
-kind: Service
-metadata:
-  name: web-devops
-spec:
-  type: NodePort
-  selector:
-    app: web-devops
-  ports:
-    - protocol: TCP
-      port: 80
-      targetPort: 80
-      nodePort: 30008
-```
+Create file: [`service.yaml`](../files/k8s_service_d60.yml)
 
 ### Apply the Service:
 
@@ -184,17 +91,10 @@ kubectl apply -f service.yaml
 kubectl get svc
 ```
 
-You should see:
-
-```
-30008/TCP
-```
-
 ---
 
 #  Good to Know
 
----
 
 ##  PersistentVolume (PV)
 
