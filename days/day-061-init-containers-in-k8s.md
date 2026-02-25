@@ -68,18 +68,6 @@ Verify init container completed successfully:
 kubectl describe pod <pod-name>
 ```
 
-### 4. Validate Application Output
-
-Check logs:
-
-```bash
-kubectl logs <pod-name>
-```
-
-```
-Init Done - Welcome to xFusionCorp Industries
-```
- 
 ---
 
 # Good to Know
