@@ -59,7 +59,7 @@ kubectl get pvc
 
 ## 3. Create the Pod and Mount the Volume
 
-Create file: `pod.yaml`
+Create file: [`pod.yaml`](../files/k8s_pod_d60.yml)
 
 ### Apply the Pod:
 
