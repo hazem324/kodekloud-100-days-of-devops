@@ -43,9 +43,9 @@ You should see the secret listed with type `Opaque`.
 
 ## 2️. Create the Pod YAML File
 
-Create a file named: [`secret-xfusion.yml`](../files/k8s_secret-xfusion_d62.yml)
+Create a file named: `secret-xfusion.yml`
 
-Add the following content:
+Add the following content: [`secret-xfusion.yml`](../files/k8s_secret-xfusion_d62.yml)
 
 ## 3️. Deploy the Pod
 
