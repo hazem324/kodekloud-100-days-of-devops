@@ -39,8 +39,6 @@ kubectl describe secret news
 
 You should see the secret listed with type `Opaque`.
 
----
-
 ## 2️. Create the Pod YAML File
 
 Create a file named: `secret-xfusion.yml`
@@ -52,8 +50,6 @@ Add the following content: [`secret-xfusion.yml`](../files/k8s_secret-xfusion_d6
 ```sh
 kubectl apply -f secret-xfusion.yaml
 ```
-
----
 
 ## 4️. Verify Pod Status
 
@@ -80,7 +76,6 @@ ls /opt/demo
 
 #  Good to Know
 
----
 
 ##  What Is a Kubernetes Secret?
 
@@ -91,16 +86,12 @@ Kubernetes Secrets are objects used to store sensitive information such as:
 * Tokens
 * License numbers
 
----
-
 ##  Secret Characteristics
 
 * **Base64 Encoded**: Data is encoded (not encrypted by default).
 * **Namespace Scoped**: Secrets belong to a specific namespace.
 * **Stored in etcd**: Saved inside Kubernetes data store.
 * **Must Be Explicitly Mounted**: Not automatically available in pods.
-
----
 
 ##  Secret Types
 
@@ -110,8 +101,6 @@ Kubernetes Secrets are objects used to store sensitive information such as:
 | `docker-registry`       | Docker registry credentials       |
 | `tls`                   | TLS certificates and private keys |
 | `service-account-token` | Auto-generated service tokens     |
-
----
 
 ##  Ways to Use Secrets
 
@@ -126,17 +115,3 @@ Kubernetes Secrets are objects used to store sensitive information such as:
 3. **Image Pull Secrets**
 
    * Authenticate to private container registries.
-
----
-
-##  Security Best Practices
-
-* Enable **RBAC** to restrict secret access.
-* Enable **encryption at rest** for etcd.
-* Rotate secrets regularly.
-* Follow **least privilege principle**.
-* Consider external secret managers like:
-
-  * HashiCorp Vault
-  * AWS Secrets Manager
-  * Azure Key Vault
