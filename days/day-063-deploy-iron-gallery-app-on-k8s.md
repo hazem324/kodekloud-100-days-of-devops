@@ -134,7 +134,6 @@ For production:
 * Use PersistentVolumeClaims (PVC)
 * Prefer StatefulSets for databases
 
----
 
 ##  Why We Used NodePort
 
