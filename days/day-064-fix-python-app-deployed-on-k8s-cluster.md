@@ -30,7 +30,7 @@ Failed to pull image "poroko/flask-app-demo"
 repository does not exist
 ```
 
-🚨 The deployment was using the wrong Docker image.
+ The deployment was using the wrong Docker image.
 
 ## 2. Fix Wrong Docker Image
 
@@ -94,7 +94,7 @@ TargetPort:  8080/TCP
 NodePort:    32345/TCP
 ```
 
-🚨 Problem: Flask default port is **5000**, but service was forwarding to **8080**.
+ Problem: Flask default port is **5000**, but service was forwarding to **8080**.
 
 
 ## 4. Fix Service Target Port
@@ -150,7 +150,6 @@ curl http://<NODE-IP>:32345
 
 # Good to Know 
 
----
 
 ##  Image Pull Issues
 
