@@ -45,7 +45,6 @@ NAME="CentOS Stream"
 VERSION="9"
 PRETTY_NAME="CentOS Stream 9"
 ```
- We will install jenkins for fedora with stable version, following this [Documentation](https://www.jenkins.io/doc/book/installing/linux/#fedora-stable)
 
 ##  Step 2 — Update System & Install Prerequisites
 
