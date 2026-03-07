@@ -218,14 +218,13 @@ ststor01
 Add command:
 
 ```bash
-sudo yum install -y $PACKAGE || sudo dnf install -y $PACKAGE
+sudo yum install -y $PACKAGE 
 ```
 
 Explanation:
 
 * `sudo yum install` → installs the package
 * `$PACKAGE` → value provided by Jenkins parameter
-* `|| sudo dnf install` → fallback for newer systems
 
 Save the job configuration.
 

@@ -93,7 +93,7 @@ Matrix Authorization Strategy
 
 After installation:
 
-✔ Restart Jenkins when installation completes.
+ Restart Jenkins when installation completes.
 
 Wait until the **login page appears again**, then login.
 
