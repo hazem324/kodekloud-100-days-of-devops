@@ -76,8 +76,6 @@ From the jump host connect to the Jenkins server:
 ssh jenkins@172.16.238.19
 ```
 
----
-
 ## 2. Generate SSH Key
 
 To enable secure automation, generate an SSH key for the Jenkins user.
@@ -92,8 +90,6 @@ Default key location:
 /var/lib/jenkins/.ssh/id_rsa
 /var/lib/jenkins/.ssh/id_rsa.pub
 ```
-
----
 
 ## 3. Configure Passwordless SSH
 
@@ -111,8 +107,6 @@ ssh-copy-id tony@stapp01
 ssh-copy-id natasha@ststor01
 ```
 
----
-
 ## 4. Verify SSH Connectivity
 
 Ensure Jenkins can connect successfully.
@@ -123,8 +117,6 @@ ssh natasha@ststor01
 ```
 
 Exit after verification.
-
----
 
 ## 5. Create Jenkins Job
 
@@ -144,8 +136,6 @@ Freestyle Project
 ```
 
 4. Click **OK**
-
----
 
 ## 6. Configure Job Trigger
 
@@ -171,8 +161,6 @@ Add the cron expression:
 
 This schedules the job to run **every 9 minutes**.
 
----
-
 ## 7. Add Build Step
 
 Add a build step:
@@ -189,8 +177,6 @@ scp tony@stapp01:/var/log/httpd/error_log .
 scp access_log error_log natasha@ststor01:/usr/src/sysops/
 ```
 
----
-
 ## 8. Save the Job
 
 Click:
@@ -198,8 +184,6 @@ Click:
 ```
 Save
 ```
-
----
 
 ## 9. Test the Job
 
@@ -216,8 +200,6 @@ Expected result:
 ```
 Finished: SUCCESS
 ```
-
----
 
 ## 10. Verify Logs on Storage Server
 
@@ -274,7 +256,6 @@ This is useful for tasks like:
 
 Scheduled automation reduces manual work and ensures consistent operations.
 
----
 
 ## Cron Expression Basics
 
@@ -310,7 +291,6 @@ H/9 * * * *
 
 This distributes jobs across different times to prevent server overload.
 
----
 
 ## Apache Log Files
 
@@ -334,7 +314,6 @@ These logs help identify issues such as:
 * Security attacks
 * Performance problems
 
----
 
 ## SCP (Secure Copy Protocol)
 
@@ -354,7 +333,6 @@ scp access_log error_log natasha@ststor01:/usr/src/sysops/
 
 This copies files to the **storage server** securely using SSH.
 
----
 
 ## Why Passwordless SSH is Important
 
