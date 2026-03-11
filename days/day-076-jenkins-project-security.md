@@ -1,4 +1,4 @@
-# Jenkins Job-Level Security Configuration
+# Jenkins Project Security
 
 The **xFusionCorp Industries DevOps team** needs to grant specific permissions to new developers for an existing Jenkins job. Instead of giving global access, Jenkins **project-based security** will be used to assign **granular permissions** only for the required job.
 
@@ -33,28 +33,14 @@ Permissions must be granted **only for the `Packages` job**.
 ### sam permissions
 
 ```
-Build
-Configure
-Read
+Build, Configure, Read
 ```
 
 ### rohan permissions
 
 ```
-Build
-Cancel
-Configure
-Read
-Update
-Tag
+Build, Cancel, Configure, Read, Update, Tag
 ```
-
-Additionally:
-
-```
-Inheritance Strategy: Inherit permissions from parent ACL
-```
-
 ---
 
 # Steps
@@ -68,8 +54,6 @@ Manage Jenkins → Manage Plugins
 ```
 
 Update plugins if necessary and restart Jenkins.
-
----
 
 ## 1. Install Required Plugin
 
@@ -87,8 +71,6 @@ Manage Jenkins → Manage Plugins → Available Plugins
 
 After installation restart Jenkins if prompted.
 
----
-
 ## 2. Configure Global Authorization Strategy
 
 Navigate to:
@@ -105,9 +87,7 @@ Project-based Matrix Authorization Strategy
 
 Ensure **admin user has full permissions**.
 
-Save the configuration.
-
----
+[![admin full permissions](../screenshots/Screenshot-day-76-admin-full-permissions.png)](../screenshots/Screenshot-day-76-admin-full-permissions.png)
 
 ## 3. Configure Job-Level Security
 
@@ -130,8 +110,6 @@ Set **Inheritance Strategy** to:
 ```
 Inherit permissions from parent ACL
 ```
-
----
 
 ## 4. Add Users and Assign Permissions
 
@@ -175,7 +153,7 @@ Enable the following permissions:
 | Run      | Update     |
 | SCM      | Tag        |
 
----
+[![Assign Permissions](../screenshots/Screenshot-day-76-assign-permissions.png)](../screenshots/Screenshot-day-76-assign-permissions.png)
 
 ## 5. Save Configuration
 
@@ -187,42 +165,6 @@ Save
 
 Do **not modify any other job configuration**.
 
----
-
-# Verification
-
-Login as each user to verify permissions.
-
-### sam
-
-Should be able to:
-
-* View the job
-* Build the job
-* Configure the job
-
-Should **not** be able to cancel builds or tag builds.
-
----
-
-### rohan
-
-Should be able to:
-
-* Build jobs
-* Cancel builds
-* Configure jobs
-* Read job information
-* Update runs
-* Tag builds
-
----
-
-# Good to Know
-
-Here is a **cleaner and corrected “Good to Know” section** you can replace in your README. I simplified some explanations and fixed a few inaccuracies (especially about **Update** and **Tag** permissions). It will look more **professional in a DevOps documentation repo**. 🚀
-
----
 
 # Good to Know
 
