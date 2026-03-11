@@ -93,8 +93,6 @@ java -version
 
 Java is required because Jenkins runs the **agent process using `agent.jar`**.
 
----
-
 ### 3. Add Jenkins Agent Nodes
 
 Navigate to:
@@ -103,9 +101,7 @@ Navigate to:
 Manage Jenkins → Nodes → New Node
 ```
 
-Create three nodes with the following configuration.
-
----
+Create three nodes:
 
 #### App_server_1
 
@@ -118,8 +114,6 @@ Create three nodes with the following configuration.
 | Host                  | stapp01               |
 | Credentials           | stapp01               |
 
----
-
 #### App_server_2
 
 | Field                 | Value                 |
@@ -130,8 +124,6 @@ Create three nodes with the following configuration.
 | Launch Method         | Launch agents via SSH |
 | Host                  | stapp02               |
 | Credentials           | stapp02               |
-
----
 
 #### App_server_3
 
@@ -146,11 +138,7 @@ Create three nodes with the following configuration.
 
 After saving, Jenkins will connect via SSH and start the agent process.
 
-Example of nodes successfully connected:
-
-![Jenkins Nodes](attachment:/mnt/data/nodeconf.png)
-
----
+[![Jenkins Nodes](../screenshots/Screenshot-day-75-jenkins-nodes.png)](../screenshots/Screenshot-day-75-jenkins-nodes.png)
 
 ### 4. Create a Test Freestyle Job
 
@@ -173,14 +161,6 @@ Enable:
 ```
 Restrict where this project can run
 ```
-
-Enter the label of the node where the job should run, for example:
-
-```
-stapp02
-```
-
----
 
 ### 5. Add Build Step
 
@@ -214,37 +194,8 @@ Open **Console Output**.
 
 Successful execution example:
 
-![Console Output](attachment:/mnt/data/testjob.png)
+[![Check logs](../screenshots/Screenshot-day-75-console-output.png)](../screenshots/Screenshot-day-75-console-output.png)
 
-Output explanation:
-
-| Output           | Meaning                             |
-| ---------------- | ----------------------------------- |
-| Hello from Agent | Command executed on agent           |
-| pwd              | Shows Jenkins workspace directory   |
-| echo $USER       | Displays Linux user running the job |
-
-Example workspace path:
-
-```
-/home/steve/jenkins/workspace/testNodes
-```
-
----
-
-### 7. Verify Successful Execution
-
-The job should finish with:
-
-```
-Finished: SUCCESS
-```
-
-This confirms:
-
-* Jenkins successfully connected to the **agent node**
-* Commands were executed **on the remote server**
-* The Jenkins distributed build setup is working correctly.
 
 ## Good to Know 
 
