@@ -119,8 +119,6 @@ Fix repository permissions:
 sudo chown -R tony:tony /var/www/html
 ```
 
----
-
 # 1. Install Jenkins Plugins
 
 Go to:
@@ -137,8 +135,6 @@ Install the following plugins:
 * SSH Build Agents
 
 Restart Jenkins after installation.
-
----
 
 # 2. Add App Server Credentials
 
@@ -157,8 +153,6 @@ ID: stapp01
 ```
 
 Save.
-
----
 
 # 3. Add Jenkins Agent (Slave Node)
 
@@ -197,8 +191,6 @@ Save and ensure the node status becomes:
 Online
 ```
 
----
-
 # 4. Create Jenkins Pipeline Job
 
 Go to:
@@ -221,7 +213,6 @@ Pipeline
 
 Important: **Do NOT select Multibranch Pipeline**.
 
----
 
 # 5. Configure Pipeline Script
 
@@ -246,8 +237,6 @@ pipeline {
 
 Save the job.
 
----
-
 # 6. Run the Pipeline
 
 Click:
@@ -267,8 +256,6 @@ git pull origin master
 Already up to date.
 Finished: SUCCESS
 ```
-
----
 
 # 7. Verify Deployment
 
@@ -292,20 +279,6 @@ Welcome to xFusionCorp Industries!
 
 ---
 
-# 8. Test Through Load Balancer
-
-Click the **App** button in the lab interface.
-
-The application should load at:
-
-```
-https://<LBR-URL>
-```
-
-The page should display the deployed website.
-
----
-
 # Good to Know
 
 ## Jenkins Pipelines
@@ -314,7 +287,6 @@ The page should display the deployed website.
 * **Declarative Pipeline** – Structured and readable pipeline syntax
 * **Scripted Pipeline** – More flexible Groovy-based pipelines
 
----
 
 ## Pipeline Components
 
@@ -324,27 +296,7 @@ The page should display the deployed website.
 | Stage     | Logical phase of the pipeline  |
 | Steps     | Commands executed in the stage |
 
----
 
-## Deployment Flow
-
-```
-Developer → Gitea Repository
-        ↓
-Jenkins Pipeline
-        ↓
-Jenkins Agent (App Server 1)
-        ↓
-/var/www/html
-        ↓
-Apache Web Server
-        ↓
-Load Balancer
-        ↓
-User Browser
-```
-
----
 
 ## Best Practices
 
