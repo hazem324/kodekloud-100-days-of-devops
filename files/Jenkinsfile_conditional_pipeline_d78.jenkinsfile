@@ -1,0 +1,36 @@
+
+pipeline {
+    agent { label 'stapp01' }
+
+    parameters {
+        string(name: 'BRANCH', defaultValue: 'master', description: 'Enter branch name: master or feature')
+    }
+
+    stages {
+        stage('Deploy') {
+            steps {
+                script {
+                    if (params.BRANCH == 'master') {
+                        sh '''
+                        cd /var/www/html
+                        git fetch --all
+                        git checkout master
+                        git pull origin master
+                        '''
+                    } 
+                    else if (params.BRANCH == 'feature') {
+                        sh '''
+                        cd /var/www/html
+                        git fetch --all
+                        git checkout feature
+                        git pull origin feature
+                        '''
+                    } 
+                    else {
+                        error "Invalid branch name. Use 'master' or 'feature'."
+                    }
+                }
+            }
+        }
+    }
+}
