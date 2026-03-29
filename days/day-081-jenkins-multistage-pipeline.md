@@ -72,27 +72,6 @@ curl -f http://stlb01:8091
 
 ---
 
-##  Final Verification
-
-Access the application via:
-
-```text
-http://stlb01:8091
-```
-
-Expected output:
-
-```text
-Welcome to xFusionCorp Industries
-```
-
-Ensure:
-
-* No subdirectory (`/web`)
-* Content loads from root URL
-
----
-
 #  Steps
 
 ### 0. Prepare Environment
@@ -140,34 +119,7 @@ sudo yum install java-17-openjdk -y
 * Name: `deploy-job`
 * Type: Pipeline
 
-Paste this pipeline script:
-
-```groovy
-pipeline {
-    agent { label 'stapp01' }
-
-    stages {
-
-        stage('Deploy') {
-            steps {
-                sh '''
-                cd /var/www/html
-                git fetch --all
-                git reset --hard origin/master
-                '''
-            }
-        }
-
-        stage('Test') {
-            steps {
-                sh '''
-                curl -f http://stlb01:8091
-                '''
-            }
-        }
-    }
-}
-```
+Paste this pipeline script: [`jenkinsfile`](../files/jenkins_multistage_pipeline_d81.jenkinsfile)
 
 ### 5. Run Pipeline
 
@@ -176,7 +128,7 @@ pipeline {
 
 ---
 
-##  Good to Know?
+##  Good to Know
 
 ### Pipeline-Based Deployment
 
