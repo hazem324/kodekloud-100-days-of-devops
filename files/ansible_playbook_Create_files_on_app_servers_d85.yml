@@ -1,0 +1,32 @@
+- name: Create file with permissions and ownership
+  hosts: app
+  become: yes
+
+  tasks:
+
+    - name: Create file on stapp01
+      file:
+        path: /usr/src/opt.txt
+        state: touch
+        mode: '0655'
+        owner: tony
+        group: tony
+      when: inventory_hostname == "stapp01"
+
+    - name: Create file on stapp02
+      file:
+        path: /usr/src/opt.txt
+        state: touch
+        mode: '0655'
+        owner: steve
+        group: steve
+      when: inventory_hostname == "stapp02"
+
+    - name: Create file on stapp03
+      file:
+        path: /usr/src/opt.txt
+        state: touch
+        mode: '0655'
+        owner: banner
+        group: banner
+      when: inventory_hostname == "stapp03"
