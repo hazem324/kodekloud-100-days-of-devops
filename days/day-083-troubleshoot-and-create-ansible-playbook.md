@@ -47,7 +47,7 @@ Create the playbook file:
 vi /home/thor/ansible/playbook.yml
 ```
 
-Add the following content: [`playbook`](../files/ansible_playbook__create_file_d83.yml).
+Add the following content: [`PLAYBOOK`](../files/ansible_playbook__create_file_d83.yml).
 
 
 

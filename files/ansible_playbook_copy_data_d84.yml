@@ -1,0 +1,17 @@
+- name: Copy index file to app servers
+  hosts: app
+  become: yes
+
+  tasks:
+
+    - name: Ensure destination directory exists
+      file:
+        path: /opt/itadmin
+        state: directory
+        mode: '0755'
+
+    - name: Copy index.html to app servers
+      copy:
+        src: /usr/src/itadmin/index.html
+        dest: /opt/itadmin/index.html
+        mode: '0644'
