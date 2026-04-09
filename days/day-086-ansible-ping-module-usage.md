@@ -21,13 +21,8 @@ In this task, we configure the inventory file with correct SSH credentials and t
 
 ##  Steps
 
-###  1. Switch to thor user
 
-```bash
-sudo su - thor
-```
-
-###  2. Update Inventory File
+###  1. Update Inventory File
 
 Edit the inventory file:
 
@@ -43,7 +38,7 @@ stapp02 ansible_host=stapp02 ansible_user=steve ansible_ssh_pass=Am3ric@ ansible
 stapp03 ansible_host=stapp03 ansible_user=banner ansible_ssh_pass=BigGr33n ansible_ssh_common_args='-o StrictHostKeyChecking=no'
 ```
 
-### 3. Test Ansible Ping (App Server 2)
+### 2. Test Ansible Ping (App Server 2)
 
 ```bash
 ansible -i /home/thor/ansible/inventory stapp02 -m ping
@@ -79,12 +74,4 @@ ansible -i /home/thor/ansible/inventory stapp02 -m ping
 
 * Prevents SSH from asking for host verification
 * Required when using `sshpass` (password auth)
-* Ensures **non-interactive execution** (CI/CD friendly)
-
-
-##  DevOps Best Practice
-
-* Avoid password-based authentication 
-* Use SSH key-based authentication 
-* Store secrets securely (Ansible Vault)
-* Use `ansible.cfg` for global settings
+* Ensures **non-interactive execution** 
