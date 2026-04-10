@@ -4,7 +4,7 @@ The Nautilus DevOps team is validating Ansible playbooks stored under `/home/tho
 
 ---
 
-## 🎯 Objective
+##  Objective
 
 * Create an **INI-based Ansible inventory**
 * Target **App Server 3 (`stapp03`)**
