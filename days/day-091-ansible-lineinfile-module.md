@@ -67,15 +67,15 @@ curl http://stapp03
 * **Apache (`httpd`) service**
   Must be **started and enabled** to serve web content after reboot.
 
-* **Idempotency principle **
+* **Idempotency principle**
   Running the playbook multiple times will not change the result unnecessarily.
 
-* **Task execution order matters ⚙️**
+* **Task execution order matters**
 
   * First: install package
   * Then: create file
   * Then: modify file
   * Finally: ensure service is running
 
-* **No restart required for HTML changes **
+* **No restart required for HTML changes**
   Apache serves static files directly — no service restart needed for simple content updates.
