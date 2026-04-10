@@ -79,7 +79,6 @@ vi playbook.yml
 
 Paste the following configuration  [`PLAYBOOK`](../files/ansible_playbook_blockinfile_module_d88.yml).
 
-
 ### 4. Run the playbook
 
 ```bash

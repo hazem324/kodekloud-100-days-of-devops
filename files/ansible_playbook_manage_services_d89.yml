@@ -1,0 +1,16 @@
+- name: Install and configure httpd
+  hosts: all
+  become: yes
+
+  tasks:
+
+    - name: Install httpd package
+      package:
+        name: httpd
+        state: present
+
+    - name: Start and enable httpd service
+      service:
+        name: httpd
+        state: started
+        enabled: yes
