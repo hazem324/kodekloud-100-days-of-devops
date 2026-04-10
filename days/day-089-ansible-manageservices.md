@@ -1,4 +1,4 @@
-# 📦 Ansible HTTPD Installation & Service Management
+# Ansible Manage Services
 
 The Nautilus DevOps team is working on automating package installation and service management across app servers in Stratos DC. To streamline operations, an Ansible playbook must be created and executed from the jump host.
 
